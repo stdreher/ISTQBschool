@@ -9,8 +9,8 @@
   "kv_namespaces": [
     {
       "binding": "PROGRESS",
-      // TODO: Run `npx wrangler kv namespace create PROGRESS` and paste the id here
-      "id": "TODO"
+      "id": "d4559a80f98041a1bcb7296aaf48e8fb",
+      "remote": true
     }
   ]
 }
