@@ -12,18 +12,18 @@ const { title, prompt } = Astro.props;
 
 <div class="agent-prompt-card hidden mb-8" data-lesson-title={title} data-prompt={prompt}>
   <p class="text-sm text-gray-500 dark:text-stone-400 mb-2 font-mono uppercase tracking-wider text-xs">
-    Prompt for your AI agent
+    Prompt für deinen KI-Agenten
   </p>
   <div class="agent-prompt-box relative rounded-lg overflow-hidden">
     <pre class="agent-prompt-text px-5 py-4 font-mono text-sm text-gray-800 dark:text-stone-200 overflow-x-auto whitespace-pre-wrap leading-relaxed"></pre>
     <button
       class="agent-prompt-copy absolute top-2.5 right-2.5 px-2.5 py-1 text-xs font-mono font-medium rounded transition-colors cursor-pointer theme-button"
     >
-      Copy
+      Kopieren
     </button>
   </div>
   <p class="agent-prompt-confirm hidden mt-5 text-sm font-mono text-gray-500 dark:text-stone-400">
-    Copied! Now paste that into your AI agent...
+    Kopiert! Füge den Prompt nun in deinen KI-Agenten ein...
   </p>
 </div>
 
@@ -43,8 +43,8 @@ const { title, prompt } = Astro.props;
 
       var customPrompt = card.getAttribute("data-prompt");
       var schoolName = document.querySelector("[data-school-name]");
-      var name = schoolName ? schoolName.getAttribute("data-school-name") : "this school";
-      var prompt = "I'm a student at " + name + ". My student ID is " + studentId + ".\n\n" + (customPrompt || "Let's work on the \"" + lessonTitle + "\" lesson together!") + "\n\nFetch " + window.location.origin + "/llms.txt for instructions.";
+      var name = schoolName ? schoolName.getAttribute("data-school-name") : "diese Schule";
+      var prompt = "Ich bin Schüler:in bei " + name + ". Meine Schüler-ID ist " + studentId + ".\n\n" + (customPrompt || "Lass uns gemeinsam an der Lektion \"" + lessonTitle + "\" arbeiten!") + "\n\nRufe " + window.location.origin + "/llms.txt für Anweisungen ab.";
       promptText.textContent = prompt;
       card.classList.remove("hidden");
 

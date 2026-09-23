@@ -4,7 +4,7 @@ export const prerender = true;
 import Base from "../layouts/Base.astro";
 ---
 
-<Base title="Glossary" description="Definitions of common terms used in this school.">
+<Base title="Glossar" description="Erklärungen zu den wichtigsten Fachbegriffen dieser Schule.">
   <div class="mb-6">
     <a href="/" class="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
       &larr; Home
@@ -12,14 +12,108 @@ import Base from "../layouts/Base.astro";
   </div>
 
   <header class="mb-8">
-    <h1 class="text-3xl font-bold">Glossary</h1>
-    <p class="text-gray-600 dark:text-gray-400 mt-2">Definitions of common terms used in this school.</p>
+    <h1 class="text-3xl font-bold">Glossar</h1>
+    <p class="text-gray-600 dark:text-gray-400 mt-2">Die wichtigsten Fachbegriffe des Kurses — passend zum ISTQB-Syllabus (Foundation Level v4.0).</p>
   </header>
 
   <article class="prose dark:prose-invert max-w-none">
-    <!-- Add glossary terms here as you create lesson content. Example: -->
-    <!-- <h2 id="term">Term</h2> -->
-    <!-- <p>Definition of the term.</p> -->
-    <p class="text-gray-500 dark:text-stone-500 italic">No glossary terms yet. Add them as you create lesson content.</p>
+    <h2 id="abnahmetest">Abnahmetest</h2>
+    <p>Teststufe, die prüft, ob das System für den realen Einsatz und die Nutzer bereit ist. Oft mit echten Nutzern und Daten; die Definition von „fertig" liefern oft die Auftraggeber. (Lektion 4)</p>
+
+    <h2 id="anweisungsueberdeckung">Anweisungsüberdeckung</h2>
+    <p>White-Box-Maß: Jede ausführbare Anweisung im Code wird mindestens einmal ausgeführt. Schwächer als die Zweigüberdeckung: 100 % Anweisungsüberdeckung sagt nichts über das Verhalten. (Lektion 9)</p>
+
+    <h2 id="anwendungsfall">Anwendungsfall</h2>
+    <p>Beschreibung, wie ein Nutzer das System einsetzt, um ein Ziel zu erreichen — mit Grundablauf („Happy Path"), Alternativen und Ausnahmen. Basis für anwendungsfallbasierte Tests. (Lektion 8)</p>
+
+    <h2 id="aequivalenzklasse">Äquivalenzklasse</h2>
+    <p>Menge von Eingabewerten, von denen das System erwartungsgemäß das gleiche Verhalten zeigt. Ein repräsentativer Wert pro Klasse genügt für 100 % Äquivalenzklassen-Abdeckung. (Lektion 6)</p>
+
+    <h2 id="ausgangskriterien">Ausgangskriterien</h2>
+    <p>Bedingungen, deren Erfüllung den Abschluss der Testaktivitäten erlaubt — etwa erreichte Abdeckung oder eine maximale Zahl offener Defekte. (Lektion 10)</p>
+
+    <h2 id="bestaetigungstest">Bestätigungstest</h2>
+    <p>Wiederholung fehlgeschlagener Tests nach der Behebung eines Defekts, um zu zeigen, dass der Defekt wirklich beseitigt wurde. Nicht zu verwechseln mit dem Regressionstest. (Lektion 4)</p>
+
+    <h2 id="defekt">Defekt</h2>
+    <p>Fehlerhafte Beschaffenheit des Testobjekts (Codepfad, Daten, Spezifikation). Die Folge hängt von der Ausführungsumgebung ab: Ein Defekt verursacht nicht zwingend einen Versagensfall. Entsteht vor allem aus menschlichen Fehlern. (Lektion 2)</p>
+
+    <h2 id="defektbericht">Defektbericht</h2>
+    <p>Dokument, das einen Versagensfall so beschreibt, dass er reproduzierbar ist: ein Defekt pro Bericht, Schritte, Umgebung, Version, erwartetes vs. tatsächliches Verhalten, Schweregrad und Priorität. (Lektion 11)</p>
+
+    <h2 id="eingangskriterien">Eingangskriterien</h2>
+    <p>Bedingungen, die erfüllt sein müssen, bevor Testaktivitäten beginnen dürfen — etwa eine testbare Funktionalität und eine bereitstehende Testumgebung. (Lektion 10)</p>
+
+    <h2 id="entscheidungstabelle">Entscheidungstabelle</h2>
+    <p>Kompakte Darstellung von Bedingungen, Aktionen und Regeln (eine Regel je Bedingungskombination). Regeln mit „egal"-Feldern lassen sich konsolidieren; pro verbleibender Regel entsteht ein Testfall. (Lektion 7)</p>
+
+    <h2 id="exploratives-testen">Exploratives Testen</h2>
+    <p>Erfahrungsbasierte Technik, bei der Testdesign, Tests und Ausführung gleichzeitig entstehen — gesteuert von Wissen und Neugier. Ideal bei unbekannten Systemen oder Zeitnot. (Lektion 9)</p>
+
+    <h2 id="fehler">Fehler</h2>
+    <p>Menschlicher Irrtum, der einen Defekt verursacht (z. B. ein Tippfehler im Code). Im Deutschen trennt der Syllabus streng: Fehler → Defekt → Versagensfall. (Lektion 2)</p>
+
+    <h2 id="fehlerraten">Fehlerraten</h2>
+    <p>Erfahrungsbasierte Technik: Auf Basis von Erfahrung und Faustregeln typische Fehler erraten und gezielt testen — etwa leere Eingaben, Nullwerte oder Sonderzeichen. (Lektion 9)</p>
+
+    <h2 id="grenzwertanalyse">Grenzwertanalyse</h2>
+    <p>Black-Box-Technik, die gezielt die Werte an und unmittelbar neben den Grenzen von Äquivalenzklassen prüft. Varianten: 2-Wert- und 3-Wert-Grenzwertanalyse. (Lektion 7)</p>
+
+    <h2 id="komponententest">Komponententest</h2>
+    <p>Teststufe, die einzelne, isolierte Bausteine (Klassen, Funktionen, Module) prüft — oft White-Box, häufig automatisiert (Unit-Tests). (Lektion 4)</p>
+
+    <h2 id="konfigurationsmanagement">Konfigurationsmanagement</h2>
+    <p>Identifizieren, versionieren, ändern und auditieren von Konfigurationselementen wie Code, Testfällen und Konfigurationen — damit stets klar ist, welche Version getestet und freigegeben wurde. (Lektion 11)</p>
+
+    <h2 id="prioritaet">Priorität</h2>
+    <p>Dringlichkeit, mit der ein Defekt behoben werden soll — eine eigene Dimension neben dem Schweregrad. Ein kosmetischer Defekt kann hohe Priorität haben, wenn er die Wahrnehmung der Nutzer stark trifft. (Lektion 11)</p>
+
+    <h2 id="produktrisiko">Produktrisiko</h2>
+    <p>Risiko für die Qualität des Produkts selbst — etwa Funktionsausfälle, Performance- oder Sicherheitsprobleme. Testen dient vor allem dazu, Produktrisiken zu verringern. (Lektion 10)</p>
+
+    <h2 id="projektrisiko">Projektrisiko</h2>
+    <p>Risiko für das Projekt an sich — Zeitplan, Budget, Ressourcen, Anforderungen. Es beeinflusst indirekt auch die Qualität des Produkts. (Lektion 10)</p>
+
+    <h2 id="regressionstest">Regressionstest</h2>
+    <p>Erneutes Ausführen bereits bestehender Tests, um sicherzustellen, dass Änderungen am System keine neuen Versagensfälle eingeschleppt haben. Der klassische Fall für Testautomatisierung. (Lektionen 4 und 12)</p>
+
+    <h2 id="risikostufe">Risikostufe</h2>
+    <p>Bewertung eines Risikos als Wahrscheinlichkeit × Auswirkung. Grundlage der risikobasierten Priorisierung: Hohe Risikostufe → mehr und intensivere Tests. (Lektion 10)</p>
+
+    <h2 id="schweregrad">Schweregrad</h2>
+    <p>Auswirkung eines Defekts auf das System (von kosmetisch bis kritisch) — unabhängig davon, wie dringend die Behebung ist. Zusammen mit der Priorität die zwei zentralen Felder jedes Defektberichts. (Lektion 11)</p>
+
+    <h2 id="statische-analyse">Statische Analyse</h2>
+    <p>Werkzeuggestützte Prüfung von Code und Dokumenten ohne Ausführung — auf Regelverstöße, Komplexität oder Sicherheitslücken. Das werkzeugseitige Gegenstück zu Reviews. (Lektionen 5 und 12)</p>
+
+    <h2 id="systemtest">Systemtest</h2>
+    <p>Teststufe, die das vollständige System als Ganzes gegen die Aufgabenstellung prüft (funktional und nicht-funktional) — unabhängig von der inneren Detailstruktur. (Lektion 4)</p>
+
+    <h2 id="testbasis">Testbasis</h2>
+    <p>Die Unterlagen, aus denen Tests abgeleitet werden: Anforderungen, Spezifikationen, Richtlinien. Eine schlecht testbare Testbasis muss dokumentiert und an die Auftraggeber zurückgemeldet werden. (Lektion 10)</p>
+
+    <h2 id="testobjekt">Testobjekt</h2>
+    <p>Das zu testende Element — ein System, eine Komponente oder ein Teil des Codes, je nach Teststufe und Testebene. (Lektion 2)</p>
+
+    <h2 id="testplan">Testplan</h2>
+    <p>Dokument, das festlegt, was erreicht werden soll und wie: Umfang, Strategie, Zeitplan, Ressourcen, Arbeitsprodukte, Eingangs- und Ausgangskriterien und Risiken. (Lektion 10)</p>
+
+    <h2 id="teststufe">Teststufe</h2>
+    <p>Gruppe von Testaktivitäten, die auf einer bestimmten Entwicklungsstufe stattfinden. Im Syllabus v4.0: Komponententest, Komponentenintegrationstest, Systemtest, Systemintegrationstest und Abnahmetest. (Lektion 4)</p>
+
+    <h2 id="validierung">Validierung</h2>
+    <p>Prüfung, ob das richtige Produkt gebaut wurde: Erfüllt das System die Bedürfnisse und Erwartungen der Nutzer? Oft Bestandteil des Abnahmetests. (Lektion 4)</p>
+
+    <h2 id="versagensfall">Versagensfall</h2>
+    <p>Beobachtbares, vom erwarteten Verhalten abweichendes Ergebnis, wenn ein Defekt tatsächlich zum Tragen kommt. Nur Versagensfälle lassen sich direkt sehen — der zugrunde liegende Defekt muss daraus abgeleitet werden. (Lektion 2)</p>
+
+    <h2 id="verifikation">Verifikation</h2>
+    <p>Prüfung, ob das Produkt richtig gebaut wurde: Entspricht das Ergebnis der Spezifikation? Beantwortet die Frage „wurde alles korrekt umgesetzt?". (Lektion 4)</p>
+
+    <h2 id="zweigueberdeckung">Zweigüberdeckung</h2>
+    <p>White-Box-Maß: Jeder Ausgang jeder Verzweigung („Ja" und „Nein") wird mindestens einmal genommen. Strenger als die Anweisungsüberdeckung: 100 % Zweigüberdeckung erzwingt 100 % Anweisungsüberdeckung. (Lektion 9)</p>
+
+    <h2 id="zustandsuebergang">Zustandsübergang</h2>
+    <p>Wechsel eines Systems von einem Zustand in einen anderen, ausgelöst durch ein Ereignis — dargestellt im Zustandsübergangsdiagramm und in der Zustandsübergangstabelle. Basis für Zustandsübergangstests. (Lektion 8)</p>
   </article>
 </Base>

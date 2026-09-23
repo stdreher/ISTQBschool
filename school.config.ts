@@ -1,35 +1,36 @@
 import type { SchoolConfig } from "./src/lib/school";
 
 const config: SchoolConfig = {
-	name: "My School",
-	description: "An interactive course about your subject.",
+	name: "Telekolleg ISTQB Certified Tester",
+	description:
+		"Interaktiver Vorbereitungskurs für die ISTQB® Certified Tester Foundation-Level-Prüfung.",
 	adjectives: [
-		"bright",
-		"clever",
-		"cosmic",
-		"curious",
-		"eager",
-		"golden",
-		"keen",
-		"mighty",
-		"nimble",
-		"radiant",
-		"sharp",
-		"steady",
+		"scharf",
+		"gruendlich",
+		"methodisch",
+		"skeptisch",
+		"genau",
+		"hartnaeckig",
+		"analytisch",
+		"wachsam",
+		"praezise",
+		"systematisch",
+		"erfahren",
+		"pruefend",
 	],
 	nouns: [
-		"builder",
-		"explorer",
-		"learner",
-		"maker",
-		"pioneer",
-		"scholar",
-		"seeker",
-		"student",
-		"thinker",
-		"tinkerer",
-		"traveler",
-		"wizard",
+		"tester",
+		"pruefer",
+		"sucher",
+		"jaeger",
+		"pruefstein",
+		"kriterium",
+		"fall",
+		"kante",
+		"quellenforscher",
+		"pfadfinder",
+		"befuerworter",
+		"schuetzer",
 	],
 	colors: [
 		"red",
@@ -52,60 +53,116 @@ const config: SchoolConfig = {
 		"slate",
 	],
 	profileFields: {
-		learningStyle: {
-			question: "How do you prefer to learn?",
+		testErfahrung: {
+			question: "Wie viel Erfahrung hast du mit dem Testen von Software?",
 			type: "single",
 			options: [
 				{
-					value: "concepts-first",
-					label: "Explain concepts first",
+					value: "noch-keine",
+					label: "Noch keine Test-Erfahrung",
+					description: "Ich bin völlig neu im Softwaretesten",
+				},
+				{
+					value: "manuell",
+					label: "Manuelles Testen",
+					description: "Ich teste manuell im Arbeitsalltag",
+				},
+				{
+					value: "automatisiert",
+					label: "Automatisiertes Testen",
 					description:
-						"Understand the concept, then see practical applications",
+						"Ich schreibe Testskripte oder arbeite in einer QA-Rolle",
+				},
+				{
+					value: "entwickler",
+					label: "Entwickler mit Testaufgaben",
+					description: "Ich bin Entwickler und teste im Rahmen meiner Arbeit",
+				},
+				{
+					value: "testmanager",
+					label: "Testleitung/Testmanagement",
+					description: "Ich plane und steuere Tests oder Teams",
+				},
+			],
+			adaptation: {
+				"noch-keine":
+					"Starte bei den Grundlagen. Erkläre Begriffe wie Testfall, Fehler und Testprozess immer mit Alltagsbeispielen, ohne Fachterminologie vorauszusetzen.",
+				manuell:
+					"Verbinde die Konzepte mit manueller Testpraxis. Betone, wie die ISTQB-Begriffe das decken, was du schon tagtäglich machst, und nenne Werkzeuge für Exploratives Testen.",
+				automatisiert:
+					"Setze Schwerpunkte auf testtechnik-unabhängiges Wissen, Risikoanalyse und Testdesign. Querbezüge zur Automatisierung sind willkommen, aber der Prüfungsstoff gilt für manuelles wie automatisiertes Testen.",
+				entwickler:
+					"Bringe Querbezüge aus der Entwicklung ein (Unit-Tests, Code-Review, CI/CD). Erkläre, wo Entwickler-Tests aufhören und das unabhängige Testteam beginnt.",
+				testmanager:
+					"Biete Management-Perspektive: Teststrategie, Risikobasiertes Testen, Aufwandschätzung und Testabschlussbericht stärker gewichten, Detailfragen straffer halten.",
+			},
+		},
+		lernziel: {
+			question: "Was ist dein Ziel mit diesem Kurs?",
+			type: "single",
+			options: [
+				{
+					value: "zertifizierung",
+					label: "Prüfung bestehen",
+					description: "Ich will die ISTQB Foundation-Level-Prüfung bestehen",
+				},
+				{
+					value: "praxis",
+					label: "Praxiskenntnisse aufbauen",
+					description:
+						"Ich will besseres Testen im Alltag, Zertifikat ist zweitrangig",
+				},
+				{
+					value: "karriere",
+					label: "Karrierewechsel",
+					description:
+						"Ich orientiere mich beruflich neu in Richtung Softwaretesten",
+				},
+				{
+					value: "auffrischen",
+					label: "Wissen auffrischen",
+					description:
+						"Ich habe bereits Testing-Wissen und will es strukturieren",
+				},
+			],
+			adaptation: {
+				zertifizierung:
+					"Orientiere dich strikt am Foundation-Level-Syllabus. Übe prüfungsrelevante Definitionen und multiple-choice-taugliche Formulierungen. Betone, wie die Prüfungsfragen typischerweise gestellt werden.",
+				praxis:
+					"Fokussiere auf anwendbare Praxis: Testplanung, Testfallentwurf und Testarten. Formale Syllabus-Details nur so weit, wie sie im Alltag helfen.",
+				karriere:
+					"Verankere die Konzepte in beruflichen Szenarien. Nenne typische Einstiegsrollen, erwartete Fähigkeiten und wie das Zertifikat im Lebenslauf wahrgenommen wird.",
+				auffrischen:
+					"Kompakt halten, auf bereits vorhandenes Wissen aufbauen. Voller Klassifikationen sparsam sein, stattdessen gezielt vertiefen, wo Lücken bestehen.",
+			},
+		},
+		lernstil: {
+			question: "Wie lernst du am liebsten?",
+			type: "single",
+			options: [
+				{
+					value: "konzepte-zuerst",
+					label: "Konzepte zuerst",
+					description: "Zuerst die Idee verstehen, dann Beispiele ansehen",
 				},
 				{
 					value: "hands-on",
-					label: "Jump into hands-on exploration",
-					description: "Start doing things, learn concepts as they come up",
+					label: "Praxis sofort",
+					description: "Gleich anwenden und dabei lernen",
 				},
 				{
-					value: "examples",
-					label: "Show me examples",
-					description: "See concrete examples first, then infer the patterns",
+					value: "beispiele",
+					label: "Mit Beispielen lernen",
+					description: "Konkrete Beispiele zuerst, Muster daraus ableiten",
 				},
 			],
 			adaptation: {
-				"concepts-first":
-					"Explain the concept, then show the practical application.",
+				"konzepte-zuerst":
+					"Erkläre den theoretischen Rahmen zuerst (z. B. warum es Äquivalenzklassen gibt), dann illustriere mit Beispielen.",
 				"hands-on":
-					"Jump straight to doing things, explain as concepts come up.",
-				examples:
-					"Lead with concrete examples, let the student infer the pattern.",
-			},
-		},
-		depthPreference: {
-			question: "How much detail do you want?",
-			type: "single",
-			options: [
-				{
-					value: "brief",
-					label: "Keep it brief",
-					description: "Short answers, get to the point",
-				},
-				{
-					value: "some-context",
-					label: "Some context is nice",
-					description: "Normal explanations with some background",
-				},
-				{
-					value: "all-details",
-					label: "Give me all the details",
-					description: "Thorough explanations, cover edge cases and rationale",
-				},
-			],
-			adaptation: {
-				brief: "Short answers. Get to the point. Minimal tangents.",
-				"some-context": "Normal explanations with some background.",
-				"all-details": "Thorough explanations. Cover edge cases and rationale.",
+					"Springe direkt zu Aufgaben und Fallbeispielen, erkläre das Konzept anhand der Lösung nachträglich.",
+				beispiele:
+					"Beginne jede Einheit mit einem konkreten Beispiel, verallgemeinere danach zum zugrunde liegenden Prinzip.",
 			},
 		},
 	},

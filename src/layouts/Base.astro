@@ -10,8 +10,8 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "An interactive, agent-driven school." } = Astro.props;
-const pageTitle = title ? `${title} | My School` : "My School";
+const { title, description = "Eine interaktive Schule, die von KI-Agenten begleitet wird." } = Astro.props;
+const pageTitle = title ? `${title} | Telekolleg ISTQB Certified Tester` : "Telekolleg ISTQB Certified Tester";
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
 
 const lessons = (await getCollection("lessons")).sort((a, b) => a.data.order - b.data.order);
@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,7 +31,7 @@ const currentPath = Astro.url.pathname;
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
 
-    <meta property="og:site_name" content="My School" />
+    <meta property="og:site_name" content="Telekolleg ISTQB Certified Tester" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
@@ -538,11 +538,11 @@ const currentPath = Astro.url.pathname;
     <div class="lg:flex">
       <!-- Mobile header -->
       <header class="lg:hidden flex items-center justify-between p-4 border-b border-gray-200 dark:border-stone-800">
-        <a href="/" class="font-mono font-bold text-lg">My School</a>
+        <a href="/" class="font-mono font-bold text-lg">Telekolleg ISTQB Certified Tester</a>
         <button
           id="menu-toggle"
           class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-stone-800"
-          aria-label="Toggle navigation"
+          aria-label="Navigation umschalten"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -555,7 +555,7 @@ const currentPath = Astro.url.pathname;
         id="sidebar"
         class="hidden lg:block w-72 shrink-0 border-r border-gray-200 dark:border-stone-800 h-screen sticky top-0 overflow-y-auto p-6"
       >
-        <a href="/" class="block font-mono font-bold text-xl mb-6 px-3" data-school-name="My School">My School</a>
+        <a href="/" class="block font-mono font-bold text-xl mb-6 px-3" data-school-name="Telekolleg ISTQB Certified Tester">Telekolleg ISTQB Certified Tester</a>
         <ol class="space-y-1">
           {lessons.map((lesson) => {
             const href = `/lessons/${lesson.data.slug}`;
@@ -593,7 +593,7 @@ const currentPath = Astro.url.pathname;
                 : "text-gray-500 dark:text-stone-500 hover:text-gray-900 dark:hover:text-stone-200",
             ]}
           >
-            Exercises
+            Übungen
           </a>
           <ol class="space-y-1">
             {exercises.map((exercise) => {
@@ -628,7 +628,7 @@ const currentPath = Astro.url.pathname;
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-50 dark:text-stone-400 dark:hover:text-stone-200 dark:hover:bg-stone-800",
             ]}
           >
-            Glossary
+            Glossar
           </a>
           <a
             href="/troubleshooting"
@@ -639,14 +639,14 @@ const currentPath = Astro.url.pathname;
                 : "text-gray-600 hover:text-gray-900 hover:bg-gray-50 dark:text-stone-400 dark:hover:text-stone-200 dark:hover:bg-stone-800",
             ]}
           >
-            Troubleshooting
+            Fehlerbehebung
           </a>
           <a
             id="sidebar-disenroll-link"
             href="/disenroll"
             class="hidden block px-3 py-1.5 rounded-md text-sm transition-colors text-gray-600 hover:text-gray-900 hover:bg-gray-50 dark:text-stone-400 dark:hover:text-stone-200 dark:hover:bg-stone-800"
           >
-            Disenroll
+            Abmelden
           </a>
         </div>
 

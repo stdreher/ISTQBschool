@@ -1,0 +1,89 @@
+---
+title: "Testüberwachung, Steuerung und Abschluss"
+slug: test-monitoring-control
+description: "Testüberwachung, Steuerung, Abweichungs- und Konfigurationsmanagement, Defektmanagement."
+order: 11
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Testüberwachung und -steuerung: Metriken, Berichte und Dashboards —
+     was gemessen wird und wie Kennzahlen den Testfortschritt zeigen.
+
+  2. Testabschluss: Abschlusskriterien, Abnahme des Testgegenstands,
+     Abschlussbericht und gelernte Erkenntnisse.
+
+  3. Konfigurationsmanagement und sein Zusammenspiel mit dem Testen
+     (Versionierung, Signierung, Veränderungskontrolle).
+
+  4. Defektmanagement: der Defektlebenszyklus (von „neu" bis
+     „geschlossen"), Defektberichte und deren Ablauf bei
+     Fehlerbehebung.
+---
+
+
+Ein Testplan ist ein Plan — die Realität weicht fast immer ab. Ziel dieser Lektion: Testen überwachen, bei Abweichung steuern, sauber abschließen und dabei Versionen wie Defekte so verwalten, dass niemand ins Chaos stolpert.
+
+## Testüberwachung und -steuerung
+
+**Testüberwachung (Monitoring)** ist der laufende Abgleich von Plan und Realität. Dazu nutzen wir **Metriken** wie:
+
+- geplante, ausgeführte, bestandene und fehlgeschlagene Testfälle,
+- Abdeckungsgrad der Anforderungen und der Stufen/Techniken,
+- Defektstatus: offene, behobene, noch nicht behobene Defekte (auch nach Schweregrad),
+- verbleibende Zeit und verbrauchte Ressourcen.
+
+Diese Kennzahlen landen in **Berichten und Dashboards** — als Testfortschrittsbericht für Projektleitung und Team. Wichtig: Metriken sind *Hinweise*, nicht Wahrheit; ein einziges „Abweichung im Testfortschritt" sollte zum Nachfragen anregen.
+
+**Teststeuerung (Control)** sind die Maßnahmen bei Abweichung — z. B.:
+
+- Testplan anpassen (Umfang, Prioritäten, Reihenfolge),
+- intensivere Tests auf hochriskante Bereiche verlagern,
+- Testvorgaben ändern (z. B. Zeitaufwand, zusätzliche Umgebungen),
+- Ressourcen umverteilen oder Neues einführen.
+
+„Überwachen und steuern" ist — wie im ersten Kapitel gesehen — eine der sieben Testaktivitäten. In der Praxis: Zuerst messen, dann handeln — nie nur das eine.
+
+## Testabschluss (Test Completion)
+
+Am Projektmeilenstein wird der Test geordnet zu Ende gebracht:
+
+- **Abschlusskriterien prüfen:** Sind die Ausgangskriterien erfüllt, oder gibt es verschiebbare Punkte?
+- **Defektauswertung:** Kritische und ungeklärte Defekte werden an die Auftraggeber weitergegeben und dokumentiert.
+- **Abschlussbericht:** Zusammenfassung für alle Beteiligten — was wurde getestet, welche Risiken bleiben, ist das Testobjekt für Release geeignet?
+- **Erkenntnisse sichern:** Was lief gut, was nicht — damit die nächste Iteration besser startet — und **Testware** (Testfälle, Daten, Skripte, Umgebungen) ordentlich archivieren für spätere Wiederverwendung.
+
+Damit ist der Test „erfolgreich abgeschlossen" — auch dann ist offen, ob eventuelle Restfehler jenseits der Kriterien bewusst in Kauf genommen wurden und dokumentiert sind.
+
+## Konfigurationsmanagement (CM)
+
+Ohne Klarheit über *Versionen* wird Qualität zur Lotterie. **Konfigurationsmanagement** stellt sicher:
+
+- **Identifikation:** Jedes Konfigurationselement (Code, Testfall, Defektbericht) ist eindeutig benannt und versioniert.
+- **Änderungskontrolle:** Veränderungen laufen nicht wild, sondern nach festgelegten Prozessen und Freigaben.
+- **Status-Erfassung (Status Accounting):** Aktueller Zustand aller Elemente ist nachvollziehbar.
+- **Prüfung (Audit):** Ein Blick hält fest, dass die tatsächlich freigegebenen Versionen auch die geplanten sind.
+
+Für das Testen entscheidend: **Testware unterliegt ebenfalls dem CM** — und ein Defektbericht verweist immer auf die *getestete* Version, sonst kann man Versagensfälle nicht reproduzieren.
+
+> **Prüfungs-Merkhilfe:** CM-Fragen drehen sich um „Wer hat welche Version von was, und ist sie als Release freigegeben?" — Alles, was im Test wichtig ist, muss rückverfolgbar sein.
+
+## Defektmanagement (Defect Management)
+
+Ein **Defektbericht** ist das Herzstück — er beschreibt einen Versagensfall so, dass er nachvollziehbar ist: er betrifft **einen** Defekt pro Bericht, enthält Testfallbezug, Umgebung, Softwareversion, Schritte zur Reproduktion, erwartetes vs. tatsächliches Verhalten, Schwere und Priorität — und bleibt sachlich (siehe Psychologie-Lektion).
+
+Der **Defektlebenszyklus** ist ein Statusmodell, z. B.:
+
+`Neu` → `Zugewiesen/Offen` → `In Bearbeitung` → `Gelöst` → `Bestätigt/Retest` → `Geschlossen` (bei Bedarf auch zurück: `Wiedereröffnet`, `Abgelehnt`, `Duplikat`, `Zurückgestellt`).
+
+**Schweregrad (Severity)** beschreibt die Auswirkung des Defekts (kosmetisch … kritisch) und **Priorität (Priority)** die Dringlichkeit der Behebung — zwei getrennte Dimensionen: Ein kosmetischer Defekt im Zahlungsprozess kann hohe Priorität haben, wenn er das Vertrauen der Kunden beeinträchtigt.
+
+**Metriken im Defektmanagement:** Defektanzahl im Verhältnis zur Testausführung, Verteilung nach Schwere, Zahl der Wiedereröffnungen — sie fließen direkt in die Testüberwachung zurück.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Beim Retouren-Flow „Gutschein nicht einlösbar" lautet der Defektbericht: „In Version 1.4.2, Betriebssystem Android 14, Schritt 1–3 reproduzierbar; erwartet: 20-Gutschein wird angerechnet; tatsächlich: Fehlermeldung 'Code ungültig' auch bei gültigem Code." Schwere: hoch (Geldfluss betroffen), Priorität: hoch → sofort in den nächsten Sprint. Dank reproduzierbarer Schritte ist der Entwickler in Minuten an einem Fix, statt zu raten.
+
+---
+
+Damit steuern wir den gesamten Testbetrieb. Die letzte Lektion wirft einen Blick auf Werkzeuge und — wichtiger — die gesunden Erwartungen, die man an Testautomatisierung knüpfen darf.

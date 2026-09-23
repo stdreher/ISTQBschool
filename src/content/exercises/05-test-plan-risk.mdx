@@ -1,0 +1,36 @@
+---
+title: "Übung 05: Testplan mit Risikoanalyse"
+slug: test-plan-risk
+description: "Einen kompakten Testplan inklusive Risikoregister und risikobasierter Priorisierung (Lektion 10) für eine eigene App schreiben."
+order: 5
+agentInstructions: |
+  Diese Übung bündelt Lektion 10 (Testplanung und Risikomanagement).
+
+  Ablauf:
+  1. Lass den Lernenden eine kleine, real existierende Anwendung wählen (Hobbyprojekt, Arbeitsprojekt, Lernapp — egal, sie muss beschreibbar sein). Falls keine fällt dir nichts ein: Das Bezahlsystem eines Onlineshops als Fallback vorschlagen.
+  2. Arbeitsschritte: Umfang/Grenzen, Strategie-Ansatz wählen und begründen (analytisch, regressionsavers, modellbasiert …), je zwei Eingangs- und Ausgangskriterien, ein Risikoregister mit mindestens vier Produktrisiken und zwei Projektrisiken je mit Wahrscheinlichkeit, Auswirkung und Risikostufe, plus eine Priorisierungsliste der zu testenden Bereiche.
+  3. Prüfe fachlich: Risikostufe = Wahrscheinlichkeit × Auswirkung nachvollziehbar berechnet, Priorisierung folgt der Risikostufe (nicht der Bequemlichkeit), Strategie-Ansatz passt zum Kontext. Markiere erst abgeschlossen, wenn Umfang, Kriterien und Risikoregister stimmig sind. Markiere über die Fortschritts-API (exerciseSlug).
+---
+{/* DRAFT */}
+
+Jetzt gibst du den Testmanager/die Testmanagerin: Für eine App deiner Wahl entsteht ein kompakter, risiko-orientierter Testplan. Es zählt die Begründung, nicht die Länge.
+
+## Aufgabenstellung
+
+Wähle eine kleine Anwendung, die du kennst (eigene App, Hobby, Arbeit), und schreibe einen **Testplan** mit diesen Abschnitten:
+
+1. **Umfang und Grenzen:** Was wird getestet, was *bewusst nicht* (und warum nicht).
+2. **Strategie-Ansatz:** Nenne den Ansatz aus Lektion 10 (z. B. analytisch-risikobasiert, regressionsavers, reaktiv) und begründe ihn für *diesen* Kontext.
+3. **Eingangs-/Ausgangskriterien:** Je zwei Kriterien dafür, wann Testaktivitäten beginnen dürfen und wann sie abgeschlossen sind.
+4. **Risikoregister:** Mindestens **vier Produktrisiken** (z. B. Funktionalversagen, Performance, Sicherheit) und **zwei Projektrisiken**. Für jedes Risiko:
+   `Risiko | Art | Wahrscheinlichkeit (niedrig/mittel/hoch) | Auswirkung (niedrig/mittel/hoch) | Risikostufe | Maßnahme/Minderung`
+   Die Risikostufe berechnest du aus Wahrscheinlichkeit × Auswirkung.
+5. **Priorisierung:** Ordne die Testanstrengung den Bereichen nach Risikostufe — erkläre, wozu du bei knapper Zeit *weniger* testest.
+
+## Ablauf
+
+Schreibe den Plan als durchgängiges Dokument (Markdown), mit Risikoregister als Tabelle. Du darfst mit dem Tutor über die Realität deiner App diskutieren.
+
+## Abschlusskriterien
+
+Abgeschlossen ist die Übung, wenn der Testplan vollständig ist und die Risikostufen rechnerisch und inhaltlich nachvollziehbar sind — also die teuersten/wahrscheinlichsten Risiken auch die intensivsten Tests bekommen.

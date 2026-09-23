@@ -1,0 +1,84 @@
+---
+title: "Testplanung und Risikomanagement"
+slug: test-planning-risk
+description: "Testplanung, Testbasisbewertung und risikobasierte Priorisierung."
+order: 10
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Testplanung: Eingangs- und Ausgangskriterien, der Testplan und seine
+     Bestandteile (Teststrategie, Umfang, Zeitplan, Ressourcen).
+
+  2. Ansätze zur Teststrategie und deren Abhängigkeit von Kontext und
+     Risiko (analytisch, modellbasiert, reaktiv u. a.).
+
+  3. Risikoanalyse: Produktrisiken vs. Projektrisiken, Schweregrad und
+     Wahrscheinlichkeit, Priorisierung von Tests.
+
+  4. Beispiele aus der Praxis und Prüfung: wie Risiken die Testintensität
+     steuern und oft in Multiple-Choice-Fragen auftauchen.
+---
+
+
+Testen passiert nicht von allein — es wird geplant, begrenzt und auf Risiken fokussiert. Diese Lektion behandelt die Testplanung und den wichtigsten Steuerungshebel überhaupt: die Risikoorientierung.
+
+## Testplanung: Wann starten, wann fertig?
+
+Die **Testplanung** legt fest, *was* erreicht werden soll und *wie* — sie übersetzt Testziele in einen konkreten Fahrplan. Ergebnis ist der **Testplan**, der typische Bestandteile umfasst:
+
+- **Umfang und Grenzen:** Was wird getestet, was bewusst nicht.
+- **Teststrategie/-ansatz:** Welche Techniken und Stufen, welcher Grad an Unabhängigkeit.
+- **Zeitplan und Meilensteine:** Wann starten und enden einzelne Aktivitäten.
+- **Ressourcen und Aufgaben:** Wer, mit welchen Werkzeugen und Umgebungen.
+- **Aus- und Weiterbildung, erforderliche Kenntnisse.**
+- **Arbeitsprodukte** (Testfälle, Berichte).
+- **Kriterien:** Eingangs- und Ausgangskriterien sowie Risiken (siehe unten).
+
+Zwei Kriteriengruppen sind prüfungsrelevant:
+
+- **Eingangskriterien (Entry Criteria):** Bedingungen, die erfüllt sein müssen, *bevor* Testaktivitäten beginnen dürfen — z. B. testbare Funktionalität liegt vor, Testumgebung steht, Testdaten verfügbar.
+- **Ausgangskriterien (Exit Criteria):** Bedingungen, deren Erfüllung den Abschluss der Aktivitäten erlaubt — z. B. erreichte Abdeckung, offene Defekte unter Schwelle.
+
+> **Prüfungs-Merkhilfe:** Eingang = „dürfen wir loslegen?"; Ausgang = „dürfen wir aufhören (bzw. ist das Testen erfolgreich)?" Häufig wird nach diesen beiden Begriffen gefragt.
+
+**Testbasis:** Die Unterlagen, aus denen die Tests abgeleitet werden (Anforderungen, Spezifikationen, Richtlinien). Wichtig: Eine unzureichend testbare Testbasis muss **dokumentiert** und an die Auftraggeber weitergereicht werden — schweigend „irgendwie klarkommen" ist unprofessionell.
+
+## Teststrategie-Ansätze
+
+Wie priorisiert und testet ein Projekt? Der Syllabus nennt verschiedene **Ansätze**, von denen in Prüfungsfragen oft der Name abgefragt wird:
+
+- **analytisch:** leitet Tests aus der Analyse ab (z. B. risikobasiert oder anforderungsbasiert),
+- **regressionsavers:** starke Absicherung gegen neue Versagensfälle durch umfangreiche Regressionstests,
+- **modellbasiert:** Tests werden aus Modellen (z. B. Zustandsmodellen) abgeleitet,
+- **methodisch:** checklisten- oder prozessgestützt, systematisch ausgerollt,
+- **konsultativ:** beruht auf Fachwissen externer Experten (Domänenexperten, Anwender),
+- **reaktiv:** reagiert auf den aktuellen Zustand des Testobjekts, z. B. explorativ.
+
+Die Wahl hängt vom Kontext ab: Regulatorik, Risikoappetit, Team, Zeit. Es gibt kein „richtiges" Rezept — aber immer eine begründete Auswahl.
+
+## Risikobasiertes Testen
+
+**Risiko** bedeutet in diesem Kontext: ein potenziell negativ eintretendes Ereignis mit einer Auswirkung. Testen selbst ist eine Maßnahme, um **Produktrisiken zu verringern** — denn nicht eliminiert werden können alle.
+
+Das Syllabus unterscheidet zwei Risikotypen:
+
+- **Produktrisiken:** betreffen die Qualität des Produkts — Funktionalversagen, schlechte Performance, Sicherheitslücken, Kompatibilitätsprobleme, Zuverlässigkeit. Ein Versagensfall *im Feld* ist die Folge.
+- **Projektrisiken:** betreffen das Projekt an sich — Zeitplan und Budget, Ressourcenverfügbarkeit, falsche oder fehlende Anforderungen, falsche Werkzeugwahl. Diese beeinflussen *indirekt auch die Qualität* des Produkts.
+
+**Risikoanalyse und Priorisierung:**
+
+1. **Risiken identifizieren** (z. B. in Workshops, aus Erfahrung, aus der Risikoliste des Projekts).
+2. **Risikostufe bestimmen:** **Wahrscheinlichkeit × Auswirkung** (Likelihood × Impact).
+3. **Priorisieren:** Testanstrengung gezielt auf die höchste Risikostufe lenken.
+4. **Risiken im **Risikoregister** festhalten** (Liste der Risiken samt Wahrscheinlichkeit, Auswirkung und Maßnahmen/Minderung) — vom Testplan referenziert.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (risikobasiert):** Im E-Commerce-Projekt gilt: Die Zahlungsabwicklung hat hohe Auswirkung (Geldfluss, Vertrauen) und mittlere Wahrscheinlichkeit eines Defekts → hohe Risikostufe → tiefe Testabdeckung mit Grenzwertanalyse und Bedingungsüberdeckung. Das „Impressum-Layout" hat niedrige Auswirkung → niedrige Stufe → wenige, einfache Testfälle. Je begrenzter der Zeitrahmen, desto klarer traf die Priorisierung nach dieser Logik.
+
+**Typische Prüfungsfrage:** Gegeben drei Features mit je Wahrscheinlichkeit und Auswirkung — welches erhält die meiste Testanstrengung? **Lösung:** nicht das „interessanteste", sondern das mit der höchsten Risikostufe (Wahrscheinlichkeit × Auswirkung). Merke: Risikostufen lassen sich *priorisieren*, aber nie auf null reduzieren — Restrisiko bleibt.
+
+---
+
+Mit Testplan versteht man auch, was Überwachung und Steuerung tun sollen — das ist das Thema der nächsten Lektion.

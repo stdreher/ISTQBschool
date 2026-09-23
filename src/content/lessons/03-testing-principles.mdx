@@ -1,0 +1,106 @@
+---
+title: "Testprinzipien und Psychologie"
+slug: testing-principles
+description: "Die sieben Testprinzipien, unabhängiges Testen und die Psychologie des Testens."
+order: 3
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Die sieben Testprinzipien im Überblick (was besagt jedes, wie sind
+     sie zu verstehen, welche Fallstricke folgen daraus).
+
+  2. Die Unabhängigkeit des Testens mit ihren vier Stufen — von „Autor
+     testet selbst" (keine Unabhängigkeit) bis „Tester außerhalb der
+     Organisation" (sehr hohe Unabhängigkeit) — samt Vor- und Nachteilen
+     sowie dem Whole-Team-Ansatz.
+
+  3. Psychologische Aspekte: warum Testen Widerstand erzeugt und wie
+     Defektberichte konstruktiv und ohne Schuldzuweisungen formuliert
+     werden.
+
+  4. Grundlegende Fähigkeiten und gute Praktiken guter Tester (z. B.
+     analytisches Denken, Neugier, kritisches Denken) und der
+     Whole-Team-Ansatz als Zusammenarbeit im Team.
+---
+
+
+Testen ist Handwerk, aber auch Haltung. Qualität entsteht dort, wo Menschen zusammenarbeiten — und genau deshalb drehen sich in dieser Lektion nicht nur Fachkonzepte, sondern auch Psychologie und Teamarbeit. Wir starten mit den sieben Testprinzipien, dem meistgeprüften Grundlagenstoff überhaupt.
+
+## Die sieben Testprinzipien
+
+Die ISTQB-Ausbildung gründet auf sieben Prinzipien. Sie klingen je für sich simpel — in Prüfungsfragen steckt jedoch fast immer eine gemeine Nuance. Deshalb dazu auch immer der Stolperstein:
+
+**1. Testen zeigt das Vorhandensein von Defekten, nicht deren Abwesenheit.**
+Wenn alle Tests grün sind, heißt das nicht, dass das Produkt fehlerfrei ist — nur, dass die geprüften Fälle die erwarteten Ergebnisse lieferten.
+
+> **Stolperstein:** „Wir haben 90 % der Testfälle bestanden — das System ist also zu 90 % korrekt." Falsch! Das Verhältnis sagen nichts über die restlichen Defekte aus.
+
+**2. Vollständiges Testen ist unmöglich.**
+Alle Kombinationen aus Eingaben, Zuständen und Abläufen zu testen, sprengt jeden Aufwand. Deshalb wird risikobasiert priorisiert statt „alles" zu probieren.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein Formular mit sechs Feldern, jedes mit fünf möglichen Werten, hätte allein 15.625 Eingabekombinationen — eine echte App hat unzählige mehr. Vollständig testen ist unmöglich, also konzentrieren wir uns auf die Risiken (siehe Lektion zu Risiko und Priorisierung).
+
+**3. Testen in frühen Phasen spart Zeit und Geld.**
+Je früher ein Defekt entdeckt wird, desto billiger ist die Behebung. Ein Fehler im Anforderungsdokument, der erst im Systemtest auftaucht, kostet ein Vielfaches dessen, was er in einem Review gekostet hätte.
+
+**4. Defekte häufen sich (Cluster-Bildung).**
+Ein kleiner Teil der Module verursacht einen großen Teil der Defekte (ähnlich dem Pareto-Prinzip). Es lohnt sich, derartige „Fehler-Cluster" in der Testplanung zu berücksichtigen.
+
+**5. Vorsicht vor dem Pestizid-Paradox.**
+Wiederholt man immer dieselben Tests, finden sie mit der Zeit keine neuen Defekte mehr. Neue oder überarbeitete Testfälle sind nötig, um neue Defekte zu entdecken.
+
+**6. Testen ist kontextabhängig.**
+Ein Katastrophensystem für ein Zugsicherungssystem wird anders getestet als eine Spiele-App oder ein E-Commerce-Shop. Es gibt kein „ein Testverfahren für alles".
+
+**7. Trugschluss der Defektfreiheit (Absence-of-defects fallacy).**
+Defektfreiheit allein bedeutet nichts, wenn das Produkt die Bedürfnisse der Nutzer nicht erfüllt oder unbenutzbar ist.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Eine Bestell-App funktioniert technisch einwandfrei — keine Versagensfälle, keine Abstürze. Aber die gewünschte Funktion „Retoure im selben Schritt wie die Bestellung" fehlt komplett. Ergebnis: Das Produkt ist defektfrei und trotzdem für die Kundschaft unbrauchbar. Defektfreiheit ist kein Selbstzweck.
+
+## Psychologie des Testens
+
+Tester und Entwickler blicken naturgemäß aus unterschiedlichen Blickwinkeln: Der Entwickler hat sein Werk *gebaut* und verbindet etwas Stolz damit; Testende versuchen, dieses Werk *in Frage zu stellen*. Genau diese Spannung macht Widerstand aus — Testen kann wie Kritik an der eigenen Arbeit wirken.
+
+Damit geht man so um:
+
+- **Defektberichte sachlich, vollständig und faktenbasiert** formulieren — das *Verhalten* beschreiben, nicht die *Person*.
+- **Keine Schuldzuweisungen.** Klare, neutrale Formulierungen statt „Ihr Code ist kaputt!".
+- **Vertrauen aufbauen.** Wer respektvoll berichtet und anerkennt, dass Entwickler ihre Arbeit meist sehr gut machen, gewinnt Kooperation für das eigentliche Ziel: ein besseres Produkt.
+
+> **Prüfungs-Tipp:** In Prüfungsfragen wird gern abgefragt, wie man einen Defektbericht schreibt — die richtige Variante ist sachlich, nachvollziehbar und frei von Anschuldigungen.
+
+## Unabhängigkeit des Testens
+
+Eine gewisse Unabhängigkeit macht Testen wirksamer, denn die Testenden haben andere Vorurteile und Blickwinkel als der Autor. Der Syllabus v4.0 nennt **vier Stufen**:
+
+1. **Keine Unabhängigkeit:** Der Autor testet sein eigenes Arbeitsprodukt selbst.
+2. **Etwas Unabhängigkeit:** Gleichgestellte aus demselben Team testen das Werk (Peer-Review, Pairing).
+3. **Hohe Unabhängigkeit:** Testende außerhalb des Teams, aber innerhalb der Organisation.
+4. **Sehr hohe Unabhängigkeit:** Testende außerhalb der Organisation (z. B. unabhängiges Testhaus).
+
+**Vorteil:** Unabhängige Testende entdecken andere Arten von Versagensfällen und Defekten als die Entwickler.
+
+**Nachteile:** Unabhängige Testende können vom Entwicklungsteam isoliert sein — es drohen Kommunikationsprobleme, eine gegensätzliche Haltung, und Entwickler können das Gefühl für die Verantwortung für Qualität verlieren. Unabhängige Testende gelten manchmal als Engpass oder Sündenbock für Verspätungen.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** In einem sicherheitskritischen Projekt (z. B. Medizintechnik) verlangt die Norm ein Testen mit hoher Unabhängigkeit. In einem kleinen E-Commerce-Team wäre das überdimensioniert — hier übernimmt meist ein eng verzahntes Team die Tests. Kontextabhängig eben (Prinzip 6).
+
+## Whole-Team-Ansatz und Fähigkeiten guter Tester
+
+Qualität ist nicht die Aufgabe einer „Abteilung Tester" — gute Ergebnisse entstehen im **Whole-Team-Ansatz**: Entwicklung, Test, Analyse, Product Ownership und weitere Rollen tragen gemeinsam Verantwortung für Qualität. Testende bringen dabei spezielles Können ein und übernehmen unterschiedliche Aufgaben. Vorteile: schnelleres Feedback, früheres Aufdecken von Problemen, bessere Auslieferungszeiten und ein gemeinsames Qualitätsverständnis. Nicht in jeder Situation passt dieser Ansatz (siehe sicherheitskritische Systeme oben).
+
+Zu den grundlegenden Fähigkeiten guter Testender zählt der Syllabus: analytisches Denken, Neugier, gute Kommunikation, systematisches und strukturiertes Vorgehen, Kreativität, Offenheit fürs Lernen, problemlösendes und kritisches Denken sowie Teamfähigkeit.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein tüchtiger Tester rechnet nicht nur den erwarteten Wert aus — er fragt „warum erwarten wir das überhaupt?" und nimmt ein Anforderungsdokument richtig auseinander. Diese Kombination aus analytischem und kritischem Denken macht den Unterschied zwischen „Testausführender" und kompetentem Testexperten.
+
+---
+
+Damit hast du das Fundament komplett: Testen, Defekt-/Fehlerwelt, Testprozess, Prinzipien und die Menschen drumherum. In der nächsten Lektion wandern wir einmal durch den Software-Lebenszyklus — von den Entwicklungsmodellen bis zur Pflegephase.

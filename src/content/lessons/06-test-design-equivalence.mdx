@@ -1,0 +1,82 @@
+---
+title: "Testdesign I: Äquivalenzklassen"
+slug: test-design-equivalence-partitioning
+description: "Die Black-Box-Technik der Äquivalenzklassenbildung."
+order: 6
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Überblick über die Testdesign-Techniken (Black-Box, White-Box,
+     erfahrungsbasiert) und Kriterien zur Auswahl.
+
+  2. Die Idee der Äquivalenzklassen: Einteilung der Eingabedaten in
+     Klassen mit gleichem erwartetem Verhalten.
+
+  3. Vorgehen: gültige und ungültige Äquivalenzklassen bilden, Deckungs-
+     regeln bestimmen (abgedeckt ist die Klasse, nicht jede Eingabe).
+
+  4. Beispiele und Stolperfallen: Grenzwerte vs. Äquivalenzklassen,
+     Regeln für den Einsatz in Prüfungsfragen.
+---
+
+
+Jetzt wird es praktisch: Wie konstruieren Tester systematisch gute Testfälle — und zwar so, dass sie mit vertretbarem Aufwand möglichst viele Defekte finden? Dafür gibt es Testdesign-Techniken. Wir beginnen mit dem Klassiker: der **Äquivalenzklassen-Bildung**.
+
+## Überblick: die drei Familien von Testdesign-Techniken
+
+Der Syllabus teilt die Techniken in drei Familien:
+
+- **Black-Box-Techniken** (verhaltensorientiert): Sie leiten Testfälle aus den Anforderungen und dem erwarteten externen Verhalten ab, ohne das Innenleben zu betrachten. Dazu zählen Äquivalenzklassen, Grenzwertanalyse, Entscheidungstabellen und Zustandsübergänge.
+- **White-Box-Techniken** (strukturbasiert): Sie leiten Testfälle aus der internen Struktur des Codes ab — etwa aus Anweisungen, Verzweigungen oder Bedingungen.
+- **Erfahrungsbasierte Techniken:** Wissen, Intuition und Erfahrung von Testenden, zum Beispiel Fehlerraten und exploratives Testen.
+
+**Kriterien für die Auswahl:** Qualität der Anforderungen und Spezifikationen (Black-Box braucht gute Anforderungen), Risiko und Komplexität, vorhandene Domänenkenntnis, verfügbare Zeit und die erwartete Fehlerart.
+
+> **Praxis-Regel:** In der Prüfung wird Black-Box-Testen oft mit „auf Basis von Anforderungen", White-Box mit „auf Basis von Code" verknüpft. Diese Zuordnung solltest du sitzen haben.
+
+## Die Idee der Äquivalenzklassen
+
+Grundidee: Viele Eingabewerte verhalten sich für das System **gleichartig** — ob Sie eine Bestellmenge von 3 oder von 3.000 eingeben, entscheidet vermutlich dasselbe Codeteil über die Gültigkeit. Solche Werte, von denen wir *erwarten*, dass das System sie einheitlich behandelt, fassen wir zu einer **Äquivalenzklasse** zusammen.
+
+Die gesuchte Regel: **Ein repräsentativer Wert pro Klasse genügt.** Testen Sie einen Wert, haben Sie die ganze Klasse „abgedeckt" — vorausgesetzt, die Annahme gleichen Verhaltens stimmt.
+
+Man unterscheidet **gültige Klassen** (vom System akzeptierte Werte) und **ungültige Klassen** (abgelehnte Werte). Beide müssen getestet werden — nur die gültigen zu testen, übersieht gerne die Behandlung von Fehleingaben.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein Bonusprogramm-Feld akzeptiert Punkte von 0 bis 99.999. Äquivalenzklassen: gültig `0–99.999`; ungültig `< 0`; ungültig `> 99.999`. Drei Werte, z. B. `5000`, `-1` und `100000`, repräsentieren alle drei Klassen — drei Testfälle decken das Feld ab.
+
+Unser Ziel ist die **Äquivalenzklassen-Abdeckung von 100 %** — das heißt: für jede identifizierte Klasse mindestens ein Testfall. Nicht mehr, nicht weniger.
+
+## Das Vorgehen
+
+1. Die **Eingabedaten** (und je nach System auch Ausgaben und Zustände) sammeln und auflisten.
+2. Werte so **gruppieren**, dass jedes Element einer Klasse dasselbe erwartete Verhalten hat.
+3. Für **jede Klasse mindestens einen Testfall** entwerfen.
+4. Deckung prüfen: Ist jede Klasse abgedeckt? Unklarheit bei Klassen — zur Nachfrage zwingen.
+
+Zwei wichtige Regeln:
+
+- **Gültige Klassen dürfen kombiniert werden** — ein Testfall kann mehrere gültige Klassen gleichzeitig auslösen (so spart man Testfälle).
+- **Ungültige Klassen werden einzeln getestet.** Grund: Oft führt bereits *eine* ungültige Eingabe zum Abbruch mit Fehlermeldung, wodurch weitere ungültige Eingaben gar nicht mehr geprüft würden. Ein Testfall pro ungültiger Klasse.
+
+{/* * Drill für die Prüfung * */}
+
+> **Kurz-Übung:** Ein Feld akzeptiert Werte von 100 bis 999. Wie viele Testfälle braucht die minimale 100-%-EP-Abdeckung?
+> **Lösung:** 3 — je einen für gültig `100–999` (z. B. `550`), ungültig `< 100` (z. B. `99`) und ungültig `> 999` (z. B. `1000`). Aussage: Es zählt nicht die Anzahl der Werte, sondern die Anzahl der Klassen.
+
+## Stolperfallen
+
+- **Äquivalenzklassen ≠ Grenzwerte.** Die EP prüft mit *innerhalb* einer Klasse liegenden Werten. Die Werte *an den Rändern* sowie unmittelbar davor/dahinter sind Aufgabe der Grenzwertanalyse (kommt in der nächsten Lektion). In Fragen: „Welcher Wert eignet sich als Vertreter der gültigen Klasse?" → ein Wert **mitten** in der Klasse.
+- **„Sicherer" doppelt testen** mit zwei Werten aus derselben Klasse bringt keine zusätzliche Abdeckung — ein Wert genügt.
+- Die **Klassenbildung ist Annahme.** Wenn das Verhalten innerhalb einer Klasse doch variiert, hat die Zerlegung nicht gestimmt — sie wird bei „Knirschen" nachjustiert, nicht verbissen verteidigt.
+- **Vergessen ungültiger Klassen** ist der häufigste Fehler in Prüfungsfragen, die nach 100 %-Abdeckung fragen.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein Login-Feld „Benutzername" erlaubt 3–20 Zeichen. Auch der Typ ist ein Wert: Buchstaben, Zahlen, Sonderzeichen. Gültige Klasse (Buchstaben/Zahlen, 3–20 Zeichen) und ungültige Klassen (zu kurz, zu lang, Zeichenklasse nicht zulässig) ergeben vier Testfälle — nicht „alle 2³⁰⁰ denkbaren Strings".
+
+---
+
+Damit hast du das Fundament für systematisches Denken im Testdesign. Als Nächstes rücken wir an die gefährlichsten Stellen jedes Eingabefelds: die Ränder — Grenzwertanalyse.

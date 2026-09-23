@@ -10,24 +10,24 @@ import { getCollection } from "astro:content";
 const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Base title="Exercises" description="Hands-on projects for applying what you've learned.">
+<Base title="Übungen" description="Praktische Projekte, in denen du das Gelernte anwendest.">
   <div class="mb-6">
     <a href="/" class="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-      &larr; Home
+      &larr; Startseite
     </a>
   </div>
 
   <header class="mb-8">
-    <h1 class="text-3xl font-bold">Exercises</h1>
+    <h1 class="text-3xl font-bold">Übungen</h1>
     <p class="text-gray-600 dark:text-gray-400 mt-2">
-      Hands-on projects where you apply what you've learned to build real things &mdash; websites, media tools, browser automation, and more.
+      Praktische Projekte, in denen du das Gelernte anwendest, um echte Dinge zu bauen &mdash; Websites, Medien-Werkzeuge, Browser-Automatisierung und mehr.
     </p>
   </header>
 
   <div id="exercise-enroll-nudge" class="hidden mb-8 rounded-xl theme-banner px-6 py-5">
-    <p class="text-base font-medium mb-1">Exercises work best with an AI agent</p>
-    <p class="text-sm opacity-80 mb-3">Enroll to get a student ID. Then paste the exercise prompt into your AI agent, and it will guide you through each project step by step.</p>
-    <a href="/" class="theme-button inline-block rounded-lg px-4 py-2 text-sm font-medium">Enroll for free</a>
+    <p class="text-base font-medium mb-1">Übungen funktionieren am besten mit einem KI-Agenten</p>
+    <p class="text-sm opacity-80 mb-3">Schreibe dich ein, um eine Schüler-ID zu erhalten. Füge anschließend den Prompt der Übung in deinen KI-Agenten ein, und er begleitet dich Schritt für Schritt durch das Projekt.</p>
+    <a href="/" class="theme-button inline-block rounded-lg px-4 py-2 text-sm font-medium">Kostenlos einschreiben</a>
   </div>
 
   <ol class="divide-y divide-gray-200 dark:divide-stone-800">
@@ -54,7 +54,7 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
                   isStub && "text-gray-400 dark:text-gray-600",
                 ]}>
                   {exercise.data.title}
-                  {isStub && <span class="ml-2 text-xs font-normal text-gray-400 dark:text-gray-600">(coming soon)</span>}
+                  {isStub && <span class="ml-2 text-xs font-normal text-gray-400 dark:text-gray-600">(in Vorbereitung)</span>}
                 </h3>
                 <p class="exercise-description mt-0.5 text-sm text-gray-500 dark:text-gray-500">{exercise.data.description}</p>
               </div>

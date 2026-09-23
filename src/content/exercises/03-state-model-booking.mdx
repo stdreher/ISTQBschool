@@ -1,0 +1,47 @@
+---
+title: "Übung 03: Zustandsmodell für einen Bestellprozess"
+slug: state-model-booking
+description: "Ein Zustandsübergangsmodell mit Testfällen für 0-Switch-, 1-Switch- und Zustandsabdeckung (Lektion 8) entwerfen."
+order: 3
+agentInstructions: |
+  Diese Übung vertieft die Zustandsübergangstests aus Lektion 8 (Zustandsübergänge und Anwendungsfälle).
+
+  Ablauf:
+  1. Stelle die Bestell-Szenarien aus dem Inhalt vor. Erkläre kurz Zustand, Ereignis und Übergang.
+  2. Lass den Lernenden ein vollständiges Zustandsmodell aufbauen: Zustände, gültige Übergänge, ungültige Übergänge, dazu die Übergangstabelle.
+  3. Danach Testfälle: 100 % Übergangsabdeckung (0-Switch), 1-Switch-Abdeckung (Folgen von zwei Übergängen) und Zustandsabdeckung — jeweils mit minimaler Testfallanzahl begründet.
+  4. Prüfe fachlich: jeder Zustand erreichbar, jeder gültige Übergang abgedeckt, ungültige Übergänge als eigene Testfälle, Zählung der 1-Switch-Folgen korrekt.
+  5. Markiere erst abgeschlossen, wenn Modell, Tabelle und die drei Abdeckungsgrade in sich konsistent sind. Markiere über die Fortschritts-API (exerciseSlug).
+---
+{/* DRAFT */}
+
+Bestellprozesse sind der Klassiker für Zustandsübergangstests: Je nach Vorgeschichte verhält sich das System anders. Hier entwirfst du das Modell und weist fachlich nach, dass deine Testfälle es vollständig abdecken.
+
+## Das System: Bestellobjekt im Online-Shop
+
+Ein Bestellobjekt durchläuft diese Zustände: **Offen**, **Bezahlt**, **Versendet**, **Geliefert**, **Storniert**.
+
+Gültige Übergänge:
+
+- `Offen → Bezahlt` bei Ereignis „bezahlen"
+- `Offen → Storniert` bei Ereignis „stornieren"
+- `Bezahlt → Versendet` bei Ereignis „versenden"
+- `Versendet → Geliefert` bei Ereignis „liefern"
+- `Bezahlt → Storniert` bei Ereignis „stornieren" (nur binnen 24 Stunden — kürzen wir hier ab: gültig)
+
+Ungültige Übergänge (dürfen nie passieren und müssen abgewiesen werden): Versand aus `Offen`, Lieferung aus `Offen`, Stornierung aus `Versendet` oder `Geliefert`.
+
+## Aufgabenstellung
+
+1. **Zustandsdiagramm:** Zeichne das Diagramm als Textmodell (Zustände als Knoten, Übergänge als Kanten mit Ereignis) und ergänze eine **Zustandsübergangstabelle** (Zeilen: Ausgangszustand, Spalten: Ereignis — dort gesetzt sind: gültiger Übergang / abgewiesen / nicht definiert).
+2. **0-Switch-Abdeckung:** Finde die minimale Testfallmenge, damit **jeder gültige Übergang** mindestens einmal ausgeführt wird. Begründe, warum es nicht mehr (und nicht weniger) Testfälle sein müssen. Füge je Kerndefektstelle einen Testfall für **ungültige Übergänge** hinzu.
+3. **1-Switch-Abdeckung:** Liste alle Folgen aus *zwei aufeinanderfolgenden gültigen Übergängen* auf und bestimme die minimale Testfallanzahl für 100 % 1-Switch-Abdeckung.
+4. **Zustandsabdeckung:** Wieviele Testfälle brauchst du, wenn nur gefordert ist, dass jeder Zustand mindestens einmal erreicht wird? Vergleiche die drei Abdeckungsgrade nach Aufwand.
+
+## Ablauf
+
+Zeige Diagramm und Tabelle zuerst, dann die drei Testfallmengen. Begründe jede Zahl schriftlich — „gezählt" allein zählt nicht.
+
+## Abschlusskriterien
+
+Abgeschlossen ist die Übung, wenn das Modell vollständig und konsistent ist (alle Zustände, alle gültigen und die als ungültig deklarierten Übergänge), die Übergangstabelle lückenlos ausgefüllt ist und die minimale Testfallanzahl für alle drei Abdeckungsgrade korrekt begründet vorliegt.

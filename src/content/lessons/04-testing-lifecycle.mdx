@@ -1,0 +1,93 @@
+---
+title: "Testen im Software-Lebenszyklus"
+slug: testing-lifecycle
+description: "SDLC-Modelle, Teststufen, Testarten und Wartungstests."
+order: 4
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. SDLC-Modelle und ihre Testphilosophie (sequenziell vs. inkrementell
+     und iterativ, Aufgaben der Tests im jeweiligen Modell).
+
+  2. Die fünf Teststufen: Komponententest, Komponentenintegrationstest,
+     Systemtest, Systemintegrationstest und Abnahmetest (Zielfokus und
+     typische Testobjekte).
+
+  3. Testarten: funktional, nicht-funktional, White-Box- und Black-Box-
+     bezogen sowie änderungsbezogen (Bestätigungstest und
+     Regressionstest).
+
+  4. Wartungstest: Auslöser, Umfang und Besonderheiten bei
+     Softwareänderungen.
+---
+
+
+Software entsteht nicht am Stück — sie reift durch den Lebenszyklus, und das Testen begleitet jede Phase. In dieser Lektion schauen wir uns an, wie Testen in das Entwicklungsmodell passt, auf welchen Stufen es stattfindet, welche Testarten es gibt und was bei der Pflege von Software zu beachten ist.
+
+## Testen im Kontext des Software-Lebenszyklus
+
+Der Software-Lebenszyklus (Software Development Lifecycle, SDLC) beschreibt die Phasen von der Idee bis zur Wartung. Wichtig ist: **Testen ist keine Phase am Ende, sondern begleitet den ganzen Prozess.** Je nach Modell sieht das unterschiedlich aus:
+
+**Sequenzielle Modelle (z. B. Wasserfall, V-Modell):** Phasen laufen nacheinander. Das V-Modell verknüpft jede Entwicklungsstufe mit einer passenden Teststufe: Zu jeder Spezifikations- oder Design-Phase gehört von Anfang an eine entsprechende Testphase auf der Gegenseite.
+
+**Inkrementelle und iterative Modelle (z. B. Scrum, andere agile Ansätze):** Das Produkt entsteht in vielen kleinen Zyklen. Güter werden in jedem Inkrement getestet — und Testen kann schon auf sehr frühen Ausschnitten beginnen.
+
+Daraus ergeben sich zwei Begriffe, die man sauber trennen muss:
+
+- **Verifikation:** „Haben wir das Produkt **richtig gebaut**?" (Übereinstimmung mit der Spezifikation)
+- **Validierung:** „Haben wir das **richtige Produkt** gebaut?" (Übereinstimmung mit den Bedürfnissen der Nutzer)
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (V-Modell):** Aus den Anforderungen entsteht der Abnahmetest, aus der Systemarchitektur der Systemintegrationstest, aus dem Feinentwurf der Komponentenintegrationstest und aus dem Code der Komponententest. So wird jede Bau-Ebene von ihrer eigenen Test-Ebene abgesichert — nach dem alten Grundsatz „teste, was du baust, und zwar auf jeder Ebene".
+
+## Die fünf Teststufen (Test Levels)
+
+Der Syllabus unterscheidet **fünf Teststufen**. Eine Stufe ist keine Testart, sondern eine Ebene des Testobjekts:
+
+1. **Komponententest** (Component Testing): testet die kleinste Einheit, eine Komponente oder ein Modul — meist direkt im Code, oft von den Entwickelnden selbst. Zielobjekte: Funktionen, Klassen, Module.
+2. **Komponentenintegrationstest** (Component Integration Testing): prüft das Zusammenwirken mehrerer Komponenten sowie die Schnittstellen zwischen ihnen.
+3. **Systemtest** (System Testing): prüft das **komplette, integrierte System** gegen die Anforderungen — Ende-zu-Ende-Verhalten, Funktionalität und Nicht-funktionales Verhalten.
+4. **Systemintegrationstest** (System Integration Testing): prüft das Zusammenspiel des Systems mit externen Systemen und Schnittstellen (z. B. Zahlungsdienste, LDAP, SEPA-Schnittstellen).
+5. **Abnahmetest** (Acceptance Testing): stellt fest, wie gut das System für **Anwender und Betrieb** geeignet ist — Vertrags-, Bediener-, Betriebs- und Regelkonformitätstests.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (E-Commerce):** Der Komponententest prüft die Rabattfunktion isoliert. Der Komponentenintegrationstest prüft Warenkorb + Rabattlogik gemeinsam. Der Systemtest fährt einen kompletten Bestellvorgang durch. Der Systemintegrationstest verbindet den Shop mit dem realen Zahlungsdienst. Der Abnahmetest stellt sicher, dass das Vertriebsteam den Shop wirklich bedienen kann.
+
+## Die Testarten (Test Types)
+
+Eine Testart beschreibt das **Ziel** der Betrachtung. Jede Stufe kann mehrere Testarten umfassen:
+
+- **Funktionales Testen:** prüft, was das System *tut* — Funktionen, Eigenschaften, Nutzbarkeit aus Sicht der Anforderungen. Fast immer das größte Übungsfeld.
+- **Nicht-funktionales Testen:** prüft, *wie* das System es tut — Performance, Belastbarkeit, Bedienbarkeit, Zuverlässigkeit, Sicherheit, Kompatibilität.
+- **Black-Box-Testen:** Testen ohne Kenntnis des Innenlebens (auf Basis von Anforderungen). Meist mit funktionalem Testen verbunden.
+- **White-Box-Testen:** Testen mit Blick auf die interne Struktur (Codepfade, Bedingungen, Verzweigungen). Meist mit Komponententest verbunden.
+- **Änderungsbezogenes Testen:** nach einer Änderung. zwei Unterarten:
+
+  - **Bestätigungstest (Confirmation/Re-testing):** erneutes Ausführen eines fehlgeschlagenen Testfalls, um zu bestätigen, dass eine gemeldete und „behobene" Abweichung wirklich behoben ist.
+  - **Regressionstest:** Tests, die prüfen, ob die Änderung **andere** Teile beschädigt hat — also ob eine bereits funktionierende Funktionalität weiterhin funktioniert.
+
+{/* * Prüfungs-Tipp * */}
+
+> **Prüfungs-Tipp:** Die Unterscheidung Bestätigungstest vs. Regressionstest wird gern abgefragt. Bestätigungstest: „Ist das bekannte Problem weg?" Regressionstest: „Hat die Änderung etwas Bekanntes kaputt gemacht?" Beides gehört zum änderungsbezogenen Testen.
+
+## Wartungstest (Maintenance Testing)
+
+Software ändert sich auch nach der Auslieferung weiter. Der Wartungstest (Testen von Änderungen an *bestehender* Software) ist nötig, weil jede Änderung neue Defekte einführen oder bestehende Komponenten beschädigen kann.
+
+**Auslöser** (was den Wartungstest auslöst):
+- neue oder veränderte Funktionalitäten (Erweiterung),
+- Veränderungen der Umgebung (neues Betriebssystem, neue Datenbank, neue Drittanbieterschnittstelle),
+- Migration und Ausmusterung (Umschlüsselung, Datenmigration, Stilllegung von Systemen).
+
+Der **Umfang** richtet sich nach Risiko: Eine kleine, lokale Änderung braucht andere Testtiefe als eine Migration aller Nutzerdaten. Oft werden neu betroffene Funktionalitäten und deren direkte Umgebung getestet — und in jedem Fall ist ein Regressionstest angeraten.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein Shop migriert von einem auf einen neuen Zahlungsanbieter. Getestet werden: der neue Anschluss (Bestätigung), der unveränderte Retourenprozess, der von der Umsetzung betroffen sein könnte (Regression) sowie die Datenübernahme der offenen Bestellungen (Migration).
+
+---
+
+Der Lebenszyklus steht. Als Nächstes geht es ans Eingemachte des Qualitätsbegriffs: statisches Testen und Reviews — wie man Defekte findet, *bevor* Software läuft.

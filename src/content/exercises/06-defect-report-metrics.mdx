@@ -1,0 +1,46 @@
+---
+title: "Übung 06: Defektbericht und Kennzahlen"
+slug: defect-report-metrics
+description: "Einen vollständigen Defektbericht schreiben und aus einem Statusbericht Maßnahmen ableiten (Lektion 11)."
+order: 6
+agentInstructions: |
+  Diese Übung vertieft Lektion 11 (Testüberwachung, -steuerung und Abschluss sowie Defektmanagement).
+
+  Ablauf:
+  1. Stelle beide Teilaufgaben aus dem Inhalt vor: (A) Defektbericht zu einem Versagensfall, (B) Metriken und Steuerungsmaßnahmen aus einem Statusbericht.
+  2. Bei (A): Der Lernende schreibt einen Defektbericht nach den Kriterien aus der Lektion — ein Defekt pro Bericht, reproduzierbare Schritte, Umgebung, erwartetes vs. tatsächliches Verhalten, Schwere und Priorität getrennt begründet.
+  3. Bei (B): Metriken berechnen (Abschlussquote, Fehlerquote, Defektdichte, restliche Testfälle) und daraus zwei konkrete Steuerungsmaßnahmen ableiten; kurz den Defektlebenszyklus auf den Beispielbericht anwenden.
+  4. Bewerte fachlich: Ist der Bericht reproduzierbar? Passen Severity und Priority? Sind die Kennzahlen richtig gerechnet und die Maßnahmen logisch? Markiere erst abgeschlossen, wenn beides sauber ist. Markiere über die Fortschritts-API (exerciseSlug).
+---
+{/* DRAFT */}
+
+Ein Defektbericht entscheidet, ob ein Fehler in zwei Minuten oder zwei Tagen behoben wird. Kennzahlen entscheiden, ob ein Testplan noch stimmt oder nachgesteuert werden muss. Beides übst du hier.
+
+## Teil A: Defektbericht
+
+Szenario: Beim Retouren-Flow „Gutschein einlösen" erhält ein Tester trotz gültigen Codes die Meldung **„Code ungültig"** — nur unter **Android 14**, Version **1.4.2** der App. Auf iOS funktioniert der gleiche Code. Der Shop verspricht im Betreff eine Erstattung von 20 €; auf Android wird nichts angerechnet.
+
+Schreibe einen vollständigen **Defektbericht** mit:
+
+1. Eindeutiger Kurzbeschreibung (ein Defekt pro Bericht),
+2. Reproduktionsschritten (Schritt für Schritt, inkl. konkreter Testdaten),
+3. Umgebung (Gerät, Betriebssystem, Version),
+4. Erwartetem vs. tatsächlichem Verhalten,
+5. **Schweregrad (Severity)** und **Priorität (Priority)** — *getrennt* begründet (erkläre, warum sich beide hier unterscheiden können),
+6. Verweis auf die getestete Version (Konfigurationsmanagement!).
+
+## Teil B: Kennzahlen und Steuerung
+
+Aus einem Testlauf liegen vor: **geplant 120 Testfälle**, ausgeführt 80; davon bestanden 62, fehlgeschlagen 18; offene Defekte 12 (davon 3 mit schwerer Auswirkung). Noch 6 Kalendertage bis zum geplanten Abschluss.
+
+1. Berechne: Ausführungsquote (geplant vs. ausgeführt), Bestanden-Quote, Defektdichte (Defekte je ausgeführten Testfall) und den voraussichtlichen Restaufwand.
+2. Leite **zwei konkrete Steuerungsmaßnahmen** ab (z. B. Prioritäten drehen, Testumfang reduzieren, Ressourcen umverteilen) und begründe sie mit einer der Kennzahlen.
+3. Ordne den Defekt aus Teil A im **Defektlebenszyklus** ein: Neu → Zugewiesen → In Bearbeitung → Gelöst → Bestätigt → Geschlossen.
+
+## Ablauf
+
+Teil A zuerst, danach Teil B. Dein Tutor prüft, ob der Bericht jemandem mit der beschriebenen Zuweisung sofort ausreicht, um mit der Suche zu beginnen.
+
+## Abschlusskriterien
+
+Abgeschlossen, wenn der Defektbericht vollständig und reproduzierbar ist, Severity/Priority getrennt begründet sind, die Kennzahlen korrekt berechnet wurden und die Steuerungsmaßnahmen logisch aus den Zahlen folgen.

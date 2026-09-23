@@ -21,38 +21,38 @@ export const GET: APIRoute = (context) => {
 
 ${config.description}
 
-Students enroll on the homepage (${origin}), get a student ID, then use an AI agent to work through lessons.
+Schüler:innen melden sich auf der Startseite (${origin}) an, erhalten eine Schüler-ID und arbeiten die Lektionen anschließend mit einem KI-Agenten durch.
 
-When a student gives you their student ID, use the API to fetch their progress and the lesson or exercise they want to work on.
+Wenn dir eine Schülerin oder ein Schüler ihre bzw. seine Schüler-ID nennt, rufe über die API den Lernfortschritt sowie die gewünschte Lektion oder Übung ab.
 
-The course has two types of content: lessons and exercises. Lessons teach through a guided flow. Exercises are hands-on projects where students apply what they've learned.
+Der Kurs hat zwei Arten von Inhalten: Lektionen und Übungen. Lektionen vermitteln den Stoff in einem geführten Ablauf. Übungen sind praktische Projekte, in denen die Schüler:innen das Gelernte anwenden.
 
-Each lesson and exercise has \`agentInstructions\` describing what is required and criteria for knowing when it is considered complete. Follow these instructions.
+Jede Lektion und jede Übung enthält \`agentInstructions\`, die beschreiben, was verlangt ist und woran du erkennst, dass die Aufgabe abgeschlossen ist. Folge diesen Anweisungen.
 
-When the criteria are met, mark the lesson or exercise complete via API before telling the student, then summarize what was accomplished, and ask if they want to proceed to the next one. When marking a lesson complete, send \`{ "lessonSlug": "..." }\`. When marking an exercise complete, send \`{ "exerciseSlug": "..." }\`. Always include the \`model\` field in the request body with the model ID you are currently running as (e.g. \`anthropic/claude-sonnet-4-5\`).
+Wenn die Kriterien erfüllt sind, markiere die Lektion oder Übung per API als abgeschlossen, bevor du es der Schülerin bzw. dem Schüler mitteilst. Fasse danach zusammen, was erreicht wurde, und frag, ob mit der nächsten Einheit fortgefahren werden soll. Zum Abschließen einer Lektion sende \`{ "lessonSlug": "..." }\`. Zum Abschließen einer Übung sende \`{ "exerciseSlug": "..." }\`. Nimm in jede Anfrage zusätzlich das Feld \`model\` auf, mit der Modell-ID, mit der du gerade läufst (z. B. \`anthropic/claude-sonnet-4-5\`).
 
-## Redoing completed lessons or exercises
+## Bereits abgeschlossene Lektionen oder Übungen wiederholen
 
-If a student wants to redo a lesson or exercise they've already completed, use DELETE /api/progress/{studentId} with \`{ "lessonSlug": "..." }\` or \`{ "exerciseSlug": "..." }\` to mark it incomplete first, then proceed with the lesson normally as if they hadn't done it before. Don't skip it just because it was previously completed.
+Wenn eine Schülerin bzw. ein Schüler eine bereits abgeschlossene Lektion oder Übung wiederholen möchte, markiere sie zuerst mit DELETE /api/progress/{studentId} und \`{ "lessonSlug": "..." }\` bzw. \`{ "exerciseSlug": "..." }\` als nicht abgeschlossen und arbeite sie danach normal durch — überspringe sie nicht nur, weil sie schon einmal abgeschlossen wurde.
 
-To reset all progress while keeping the student's ID and profile, send DELETE /api/progress/{studentId} with \`{ "reset": true }\`.
+Zum Zurücksetzen des gesamten Fortschritts bei erhaltener Schüler-ID und erhaltenem Profil sende DELETE /api/progress/{studentId} mit \`{ "reset": true }\`.
 
-Exercises are available at GET /api/exercises (list all) and GET /api/exercises/{slug} (single exercise).
+Übungen sind verfügbar unter GET /api/exercises (Liste aller Übungen) und GET /api/exercises/{slug} (einzelne Übung).
 
-When presenting multiple choice questions, do not label any answer choice as "Recommended".
+Wenn du Multiple-Choice-Fragen stellst, versehe keine Antwortmöglichkeit mit dem Label "Recommended".
 
 ## Support
 
-${config.support.issues ? `Report issues: ${config.support.issues}` : ""}
+${config.support.issues ? `Probleme melden: ${config.support.issues}` : ""}
 ${config.support.community ? `Community: ${config.support.community}` : ""}
 
-Download this schema to know how to interact with the API: ${origin}/api/openapi.json
+Lade dieses Schema herunter, um die Interaktion mit der API zu verstehen: ${origin}/api/openapi.json
 
-## Student profile
+## Lernprofil
 
-When you fetch a student's progress via GET /api/progress/{studentId}, the response may include a \`profile\` object with the student's preferences from their interview lesson. Adapt your teaching based on these fields:
+Wenn du den Lernfortschritt einer Schülerin bzw. eines Schülers über GET /api/progress/{studentId} abrufst, kann die Antwort ein \`profile\`-Objekt mit den Präferenzen aus der Interview-Lektion enthalten. Passe deinen Unterricht anhand dieser Felder an:
 ${profileGuidelines}
-If the profile is empty or missing, the student skipped the interview. Teach at a general level suitable for beginners.
+Ist das Profil leer oder fehlt es, hat die Schülerin bzw. der Schüler das Interview übersprungen. Unterrichte dann auf einem allgemeinen Niveau, das für Einsteiger geeignet ist.
 `;
 	return new Response(content, {
 		status: 200,

@@ -1,0 +1,77 @@
+---
+title: "Testdesign III: Zustandsübergänge und Anwendungsfälle"
+slug: test-design-state-transition-use-cases
+description: "Zustandsübergangstests und anwendungsfallbasierte Tests."
+order: 8
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Zustandsübergangsdiagramme und -tabellen: Zustände, Übergänge,
+     Ereignisse, Vorbedingungen und ausgelöste Aktionen.
+
+  2. Zustandsübergangstests: gültige und ungültige Übergänge als
+     Testfälle, vollständige und abgeschwächte Abdeckung.
+
+  3. Anwendungsfalltests: Nutzerinteraktionen als Szenarien, abgeschlossene
+     und teilweise Pfade, Abdeckungskriterien.
+
+  4. Abgrenzung und Kombination: wann Zustands- oder Anwendungsfalltests
+     die richtige Wahl sind.
+---
+
+
+Manche Systeme haben ein „Gedächtnis": Sie befinden sich je nach Vorgeschichte in unterschiedlichen Zuständen und reagieren je nach Zustand anders. Ob eine Buchung stornierbar ist, hängt davon ab, ob sie schon bezahlt wurde. Solche Systeme testet man mit **Zustandsübergangstests**; Abläufe aus Nutzersicht mit **anwendungsfallbasierten Tests**.
+
+## Zustände, Übergänge, Ereignisse
+
+Ein **Zustandsübergangsdiagramm** zeigt:
+
+- **Zustände:** erkennbare Situationen, in denen sich das Testobjekt befinden kann (z. B. „aktiv", „gesperrt"),
+- **Ereignisse:** Auslöser, die einen Zustandswechsel bewirken (z. B. „PIN falsch eingegeben"),
+- **Übergänge:** durch Ereignisse ausgelöste Wechsel mit Vor- und Nachbedingung, oft mit einer Reaktion/Aktion verbunden.
+
+Eine **Zustandsübergangstabelle** ist die tabellarische Entsprechung — ideal, um die Übersicht zu behalten und Vollständigkeit zu prüfen.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (Kartenzahlung):** Zustände: `Aktiv`, `Gesperrt`. Ereignisse: „Karte eingeführt", „PIN falsch", „PIN richtig". Ein- und Ausgabe ist die Karte; nach **drei falschen PIN-Eingaben** wechselt die Karte dauerhaft nach `Gesperrt` — auch mit korrekter PIN bleibt sie dort. Solche Logik lohnt es, exakt zu prüfen.
+
+## Zustandsübergangstests und Abdeckung
+
+Aus Diagramm oder Tabelle werden **Testfälle**: ein Testfall deckt einen oder mehrere Übergänge ab. Man testet **gültige Übergänge** (vorgesehene Wechsel) und **ungültige Übergänge** (gar nicht vorgesehene Wechsel, die das System abweisen muss).
+
+Abdeckungsgrade (v4.0):
+
+- **Übergangsabdeckung (0-Switch):** Jeder Übergang mindestens einmal.
+- **1-Switch-Abdeckung:** Jede Folge aus *zwei aufeinanderfolgenden Übergängen* mindestens einmal — das fängt Zustandsprobleme, die einzelne Übergänge verbergen.
+- **Zustandsabdeckung:** Jeder Zustand mindestens einmal erreicht.
+
+{/* * Drill für die Prüfung * */}
+
+> **Kurz-Übung:** Ein System mit 4 Zuständen und 6 Übergängen. Welche Testfallmenge genügt für 100 % Übergangsabdeckung? **Lösung:** mindestens so viele Testfälle, dass jeder der 6 Übergänge vorkommt — das sind, geschickt geschnitten, oft weniger als 6 Testfälle, weil ein Testfall mehrere Übergänge hintereinander durchläuft. Wichtig ist das *Abhaken*, nicht das bloße Zählen.
+
+## Anwendungsfalltests (Use-Case-Testing)
+
+**Anwendungsfälle (Use Cases)** beschreiben, wie eine Person das System benutzt, um ein Ziel zu erreichen — als Szenarien mit Aktionen, Normal- und Fehlerpfaden. Ein Anwendungsfall enthält typischerweise:
+
+- den **Grundablauf (Happy Path/Basis-Pfad):** der erwartete, „normale" Weg zum Ziel,
+- **Alternativabläufe und Ausnahmen:** Abweichungen, Fehlpfade, Ausnahmen.
+
+**Anwendungsfallbasiertes Testen** erzeugt mindestens einen Testfall je Szenario — das Ziel ist, **end-to-end aus Sicht der Nutzer** zu prüfen, nicht einzelne Funktionen isoliert. Vollständige Anwendungsfall-Abdeckung erreicht ein Testdesign, wenn jedes Szenario mindestens einmal getestet ist.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (Online-Shop):** Anwendungsfall „Bestellung aufgeben". Grundablauf: Artikel in den Warenkorb → zur Kasse → bezahlen → Bestellbestätigung. Alternativen: Artikel vergriffen, Bezahlung fehlgeschlagen, Warenkorb leer. Je Szenario ein bis zwei Testfälle ergeben eine schlanke, aber nutzerzentrierte Testabdeckung — ideal ergänzend zu den feldbezogenen Techniken aus den letzten Lektionen.
+
+## Abgrenzung und Kombination
+
+- **Zustandsübergänge** sind die Wahl, wenn das System klar unterschiedliche Zustände und Ereignisse hat (Maschinen, Workflows, Protokolle).
+- **Anwendungsfälle** sind die Wahl, wenn es auf *Abläufe aus Nutzersicht* ankommt — sie decken nicht tiefe Zustandslogik ab, dafür die Nutzung „von außen".
+- Beides kombiniert sich gut: Der Anwendungsfall „Bestellung aufgeben" nutzt innenliegend Zustandslogik des Bestellobjekts (offen → bezahlt → stornierbar), die man mit Übergängen scharf testet.
+
+> **Prüfungs-Merkhilfe:** Zustandsübergang = „was passiert in welchem Zustand". Anwendungsfall = „was will der Nutzer mit dem System erreichen". Fällt in der Aufgabe der Begriff „Anwendungsfall", denke nicht an Zustände — und umgekehrt.
+
+---
+
+Damit ist die Black-Box-Galerie komplett. Als Nächstes schauen wir ins Innere: White-Box-Techniken und erfahrungsbasierte Methoden.

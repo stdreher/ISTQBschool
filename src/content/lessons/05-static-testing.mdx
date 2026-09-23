@@ -1,0 +1,93 @@
+---
+title: "Statisches Testen"
+slug: static-testing
+description: "Rezensionen und Review-Techniken als statische Prüfmethoden."
+order: 5
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Statisches Testen vs. dynamisches Testen — was wird wann geprüft,
+     welche Arbeitsobjekte sind geeignet.
+
+  2. Der Review-Prozess mit seinen Rollen und Aktivitäten (Reviewer,
+     Autor, Moderator, Protokollführer u. a.).
+
+  3. Die Review-Arten: informeller Review, Walkthrough, technischer
+     Review, Inspektion (und wie formell sie jeweils sind).
+
+  4. Review-Techniken zur Fehlersuche und Erfolgsfaktoren für gute
+     Reviews.
+---
+
+
+Bisher war von „Testen" meist das *dynamische* Testen gemeint: Software läuft, wir beobachten Verhalten und vergleichen mit der Erwartung. Doch ein erstaunlich großer Teil von Defekten steckt dort, wo noch gar nichts läuft — in Anforderungen, Entwürfen und Dokumenten. Genau dafür gibt es statisches Testen. Und eines vorweg: Es ist meist das billigste Testen überhaupt.
+
+## Statisches vs. dynamisches Testen
+
+**Dynamisches Testen** führt das Testobjekt aus: Wir setzen Reize (Eingaben), beobachten das Verhalten und vergleichen mit dem erwarteten Ergebnis. Es kann nur auf bereits ausführbare Arbeitsprodukte angewendet werden.
+
+**Statisches Testen** prüft Arbeitsprodukte **ohne Ausführung** — durch *Reviews* (von Menschen) und *statische Analyse* (durch Werkzeuge). Dazu zählen Anforderungsdokumente, Feinentwürfe, Codestrukturen, aber auch Testfälle, Testpläne, Bedienungsanleitungen und Verträge.
+
+Der große Vorteil: Statisches Testen findet Defekte **dort, wo sie entstehen**, und zwar bevor sie zu Versagensfällen führen. Ein falsch spezifiziertes Verhalten entdeckt man im Anforderungs-Review für einen Bruchteil der Kosten, die die Behebung im Systemtest verursachen würde.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Im Review eines Anforderungsdokuments fällt auf: „Nach AUFTRAGSRECHNER (AKTION) darf ..." ist nicht definiert, was bei einem leeren Warenkorb zwei Tage später passiert. Ein dynamischer Test hätte das erst nach Auslieferung des Codes aufgedeckt — samt zehnfacher Kosten. Im Review kostet der Hinweis fünf Minuten.
+
+## Der Review-Prozess: Rollen und Aktivitäten
+
+Ein förmlicher Review läuft nicht improvisiert ab. Folgende **Rollen** wirken darin zusammen:
+
+- **Autor/Autorin:** hat das zu prüfende Arbeitsprodukt erstellt.
+- **Reviewer:** prüfen das Produkt und melden Befunde (die wichtigste Rolle).
+- **Moderator/Moderatorin (Facilitator):** leitet das Review, hält es auf Kurs, sorgt für einen konstruktiven Ablauf.
+- **Protokollführer (Scribe):** notiert Ergebnisse, Befunde und Vereinbarungen (idealerweise nicht der Autor selbst).
+- **Management (z. B. Projektleitung):** sorgt für Zeit und Ressourcen, entscheidet über Folgemaßnahmen, ist aber nicht unbedingt im Detail-Review dabei.
+
+Der **förmliche Ablauf** folgt typischen Phasen:
+
+1. **Planung:** Ziel, Umfang, Teilnehmende, Rollen und Zeitaufwand festlegen.
+2. **Kickoff (Anlauf):** Einführung in das Review, Verteilung der Materialien.
+3. **Individuelles Review:** Jeder Reviewer prüft eigenständig und notiert Befunde.
+4. **Review-Besprechung:** Die Befunde werden gesichtet, diskutiert und bewertet — daraus entsteht eine Liste mit Entscheidungen.
+5. **Nacharbeit:** Der Autor behebt die akzeptierten Befunde; der Reviewer bestätigt die Behebung.
+6. **Abschluss (Follow-up):** Das Review ist formal abgeschlossen; die Prüfleitung fasst Ergebnisse und Metriken im Abschlussbericht zusammen.
+
+## Die Review-Arten
+
+Je nach Förmlichkeit (und damit je nach Aufwand und Ertrag) unterscheidet der Syllabus vier Arten:
+
+| Review-Art | Förmlichkeit | Hauptziel |
+| --- | --- | --- |
+| **Informeller Review** | gering | Schnelle Feedbackschleife, z. B. per E-Mail oder Paararbeit; keine formale Dokumentation |
+| **Walkthrough** | mittel | Durchgehen des Produkts, um Verständnis zu sichern; es dürfen überall Befunde gemeldet werden |
+| **Technischer Review** | mittel bis hoch | Prüfung auf technische Entscheidungen und Qualität, oft von einem Moderator geleitet; Befunde werden dokumentiert |
+| **Inspektion** | hoch | Der formalste Weg: definierte Rollen, Ziele, Metriken und aufgezeichnete Ergebnisse |
+
+> **Prüfungs-Tipp:** Die Reihenfolge von „informell" bis „förmlich" wird gern abgefragt. Merkhilfe: **Informelles Review → Walkthrough → Technisches Review → Inspektion**. Die Inspektion ist am förmlichsten, der informelle Review der schnellste.
+
+## Review-Techniken und Erfolgsfaktoren
+
+**Techniken** zur systematischen Suche (oft kombiniert eingesetzt):
+
+- **Stichprobe (Sampling):** Auswahl und Prüfung repräsentativer Auszüge (z. B. bei sehr großen Dokumenten).
+- **Checklistenbasiert:** Prüfung entlang vorab definierter Checklisten, die festlegen, worauf zu achten ist.
+- **Rollenbasiert / Szenariobasiert:** Das Produkt aus der Perspektive einer Rolle betrachten (z. B. „Was würde ein neuer Kunde tun?") oder anhand konkreter Szenarien durchspielen.
+
+**Erfolgsfaktoren** für produktive Reviews:
+
+- klare Zielvorgaben und passende Förmlichkeit,
+- ausreichend Zeit einplanen — Reviews unter Zeitdruck sind wertlos,
+- die *richtigen*, erfahrenen Reviewer auswählen,
+- **Befunde annehmen statt sie zu verteidigen** — das Review ist kein Wettkampf zwischen Autor und Reviewer,
+- Feedback mit dem Werk verbinden, nicht mit der Person,
+- Befunde nachverfolgen, bis sie gelöst sind.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (szenariobasiert):** Inspektion der Anforderung „Zahlung: Gutschein und Punkte einlösbar". Ein Reviewer prüft aus der Rolle „Kunde, der 10 Artikel mit 2 Gutscheinen und Punkten bestellt" — und stößt auf die ungeplante Abhängigkeit zwischen den Rabatten, die im dynamischen Test erst Wochen später im Systemtest sichtbar geworden wäre.
+
+---
+
+Damit ist klar: Defekte fangen wir am besten *vor* der Ausführung. Jetzt steigen wir in die eigentlichen Testtechniken ein — zuerst die Äquivalenzklassen-Bildung, das Herzstück von Testdesign.

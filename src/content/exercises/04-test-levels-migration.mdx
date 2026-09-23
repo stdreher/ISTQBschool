@@ -1,0 +1,42 @@
+---
+title: "Übung 04: Teststufenplan für ein Migrationsprojekt"
+slug: test-levels-migration
+description: "Teststufen, Verifikation vs. Validierung und Eingangs-/Ausgangskriterien (Lektion 4) für ein konkretes Projekt festlegen."
+order: 4
+agentInstructions: |
+  Diese Übung wendet Lektion 4 (Testen im Software-Lebenszyklus) auf ein Migrationsszenario an.
+
+  Ablauf:
+  1. Stelle das Migrationsszenario aus dem Inhalt vor (Alt-CRM, neue REST-API, Zahlungsanbieter, mobile App, Datenmigration).
+  2. Lass den Lernenden einen Teststufenplan entwickeln: Welche Teststufen sind nötig, was wird auf jeder Stufe geprüft, wer verantwortet sie, wo laufen Verifikation und wo Validierung?
+  3. Vertiefung: Eingangs- und Ausgangskriterien je Stufe nennen, plus die drei Testarten (funktional, nicht-funktional, strukturell/White-Box) mindestens einem Projektteil zuordnen.
+  4. Bewerte fachlich: sinnvolle Abfolge, keine übersprungene Stufe, plausible Kriterien. Markiere erst abgeschlossen, wenn der Plan vollständig und nachvollziehbar ist. Markiere über die Fortschritts-API (exerciseSlug).
+---
+{/* DRAFT */}
+
+Ein Testplan ist erst dann glaubwürdig, wenn er weiß, *was auf welcher Stufe* passiert. Dieses Szenario ist so geschnitten, dass sich fast alle Stufen und Testarten sinnvoll vergeben lassen.
+
+## Szenario: Migration auf ein neues Kunden-CRM
+
+Ein Versicherer migriert sein Alt-Kundensystem (≈ 15 Jahre alt, eigene Datenbank) auf ein neues CRM. Im Projekt sind beteiligt:
+
+- eine **neue Backend-API** (eigene Entwicklung, Java), die Alt-Daten übernimmt,
+- **Kundendaten-Migration** aus der alten Datenbank (≈ 500.000 Datensätze, inkl. Adressen mit oft falschen PLZs),
+- eine **mobile Versicherungs-App** (eigene Entwicklung), die auf der neuen API aufbaut,
+- ein **externer Zahlungsanbieter** (Fremdsystem) für Mahnungswesen — nur über dessen Schnittstelle erreichbar,
+- das **Alt-CRM** läuft während der Migration noch parallel weiter (Fallback-Zeitraum von 6 Monaten).
+
+## Aufgabenstellung
+
+1. **Teststufen wählen:** Welche der v4.0-Teststufen (Komponententest, Komponentenintegrationstest, Systemtest, Systemintegrationstest, Abnahmetest) brauchst du hier — und welche sprichst du *zwei- oder dreimal* an, weil mehrere Komponenten zusammenspielen? Lege für jedes Bauteil fest, auf welcher Stufe es getestet wird.
+2. **Verifikation vs. Validierung:** Markiere bei jeder Stufe, ob sie überwiegend Verifikation („wurde richtig gebaut?") oder Validierung („wurde das Richtige gebaut?") ist — und ordne mindestens eine **Abnahmestufe** aus *Anwendersicht* zu.
+3. **Testarten:** Ordne die drei Arten (funktional, nicht-funktional, strukturell) konkreten Projektteilen zu — z. B. Performance der Migration, White-Box-Komponententests der API-Logik, funktionale Tests der Mahnungs-Schnittstelle.
+4. **Eingangs-/Ausgangskriterien:** Formuliere je Stufe mindestens zwei Eingangs- und zwei Ausgangskriterien (z. B. „Migration abgeschlossen und Summen wurden gegen Alt-System abgeglichen").
+
+## Ablauf
+
+Präsentiere deinen Plan als Tabelle: `Stufe | Testobjekt | Ziel/Testbasis | Eintrittskriterien | Austrittskriterien`. Begründe jede Stufe in einem Satz.
+
+## Abschlusskriterien
+
+Abgeschlossen ist die Übung, wenn alle fünf Stufen berücksichtigt wurden (auch wenn du begründest, dass eine hier entfällt), Verifikation/Validierung korrekt zugeordnet sind und je Stufe plausibel Eintritts- und Austrittskriterien vorliegen.

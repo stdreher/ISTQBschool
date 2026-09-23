@@ -1,0 +1,42 @@
+---
+title: "Übung 07: Automatisierungsempfehlung"
+slug: automation-recommendation
+description: "Nutzen und Risiken der Testautomatisierung (Lektion 12) an einem realen Projekt abwägen und eine Empfehlung formulieren."
+order: 7
+agentInstructions: |
+  Diese Übung wendet Lektion 12 (Testwerkzeuge) an: Nutzen/Risiken der Automatisierung und Richtlinien für Werkzeugauswahl.
+
+  Ablauf:
+  1. Stelle das Unternehmen aus dem Inhalt vor. Lass den Lernenden zuerst den Automatisierungsvorschlag des Teams bewerten — bevor er/sie die eigene Empfehlung schreibt.
+  2. Arbeitsschritte: (a) Entscheiden, welche Tests sich automatisieren lassen und welche bewusst manuell bleiben (Begründung!), (b) Risiken der Teilautomatisierung benennen (Wartungskosten, fragile UI-Tests, Eigenfehler der Werkzeuge), (c) eine Werkzeugauswahl skizzieren (Eigene Nutzungskriterien anwenden) und (d) einen Pilotplan.
+  3. Prüfe fachlich: Ist die Empfehlung risiko-basiert? Erkennt der Lernende, dass „automatisiert“ nicht „besser“ bedeutet? Passt der Pilotplan zu Lektion 12? Markiere erst abgeschlossen, wenn die Empfehlung begründet und in sich stimmig ist. Markiere über die Fortschritts-API (exerciseSlug).
+---
+{/* DRAFT */}
+
+Automatisierung ist kein Selbstzweck — sie ist eine Investitionsentscheidung. Ein Team aus deinem Arbeitsumfeld will den kompletten End-to-End-Test automatisieren. Du sollst die Rationale dahinter beurteilen und eine fundierte Empfehlung schreiben.
+
+## Szenario
+
+Ein E-Commerce-Unternehmen (Webshop mit 30 Screens, häufigem Release alle 2 Wochen) will „endlich alles automatisieren". Das Team hat dafür ein Werkzeug gekauft, das die UI per Screenshot vergleicht. Bisher ist bekannt:
+
+- Die Regressionstests laufen manuell und brauchen **2 Tage pro Release**.
+- Die Website ändert regelmäßig Promotion-Banner, Farben und kleine Layouts („Screenshot-Drift").
+- Die Zahlungslogik (Rabattrechner!) ändert sich selten, ist aber **risikoreich**.
+- Eine ausgelagerte Kaufabwicklungs-API hat stabile, gut dokumentierte Schnittstellen.
+
+## Aufgabenstellung
+
+Schreibe eine **Automatisierungsempfehlung** in vier Abschnitten:
+
+1. **Was automatisieren, was nicht:** Ordne die Bereiche aus dem Szenario den Kategorien zu — „automatisieren, weil stabil/wiederholbar/wertvoll", „manuell lassen, weil fragil/einmalig/explorativ" — und begründe je Bereich. Nenne das passende Werkzeug (Testausführungs-, Vergleichs-, Analyse-Ebene).
+2. **Risiken:** Benenne die drei größten Risiken des ursprünglichen Plans („alles automatisieren") und wie du sie entschärfst.
+3. **Werkzeugauswahl:** Fasse die Kriterien aus Lektion 12 zusammen und wende sie auf das konkrete Werkzeug an (Wartbarkeit, echte- Daten-Bewertung, Pilot).
+4. **Pilot und Einführung:** Skizziere einen kleinen Piloten (Umfang, Erfolgskriterien, Lerneffekt) und die anschließende Ausrollung.
+
+## Ablauf
+
+Diskutiere zuerst die Stärken/Schwächen des Team-Vorschlags, schreibe dann deine Empfehlung als Markdown-Dokument.
+
+## Abschlusskriterien
+
+Abgeschlossen, wenn deine Empfehlung risiko-basiert ist (fragile UI-Tests nicht draufzahlen), du bewusst „manuelle Inseln" erhältst, das Werkzeug nach realen Kriterien beurteilt und einen Piloten vorgesehen hast.

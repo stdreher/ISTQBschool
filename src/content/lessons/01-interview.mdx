@@ -1,26 +1,66 @@
 ---
 title: "Interview"
 slug: interview
-description: "Tell us about yourself so we can tailor the course to you."
+description: "Beantworte ein paar optionale Fragen, damit der Kurs zu dir passt."
 order: 1
 quiz: false
 agentOnly: true
 agentInstructions: |
-  This lesson is a short interview. The student's answers personalize the
-  rest of the course. Every question can be skipped.
+  Diese Lektion ist ein kurzes Interview. Die Antworten der Schülerin bzw.
+  des Schülers passen den restlichen Kurs individuell an. Jede Frage kann
+  übersprungen werden.
 
-  Present ALL questions at once interactively. Include a "Skip" option in
-  every question.
+  Stelle ALLE Fragen interaktiv auf einmal. Biete bei jeder Frage eine
+  Option zum Überspringen an.
 
   {interviewQuestions}
 
-  After answers are collected, submit them in a single
-  PUT /api/profile/{studentId} request. Include only the fields the
-  student answered.
+  Sobald die Antworten vorliegen, übermittle sie in einer einzigen
+  PUT /api/profile/{studentId}-Anfrage. Nimm nur die Felder auf, die die
+  Schülerin bzw. der Schüler tatsächlich beantwortet hat.
 
-  Acknowledge their answers, then mark the lesson complete.
+  Bestätige die Antworten kurz und markiere dann die Lektion als
+  abgeschlossen.
 ---
 
-In this lesson, your AI tutor will ask you a few optional questions about your background and preferences. Your answers help tailor the rest of the course to you.
+Willkommen! Bevor der eigentliche Kurs losgeht, führt dich dein KI-Agent durch ein kurzes Interview. Es dauert nur wenige Minuten, ist komplett optional und sorgt dafür, dass der Unterricht ab Lektion 2 zu deinem Vorwissen und deinem Lernstil passt.
 
-All questions are optional. Skip any you'd rather not answer.
+## Was im Interview passiert
+
+Dein Agent stellt dir einige Fragen zu deinem Hintergrund, deinem Ziel und deiner bevorzugten Lernweise — zum Beispiel zur Test-Erfahrung und zum Lernstil:
+
+- Dein Agent zeigt dir **alle Fragen auf einmal** und bietet jede davon zum Überspringen an.
+- Du beantwortest nur, was dir wichtig ist. **Alles ist optional** — auch alle Fragen auf einmal.
+- Bei einigen Fragen wählst du aus vorgegebenen Optionen, bei anderen formulierst du frei.
+- Dein Agent übermittelt deine Antworten anschließend **in einem Schritt** an dein Profil.
+
+Beantworte nur, wozu du dich wohlfühlst — dein Profil steuert bereits ab der nächsten Lektion den Unterricht.
+
+## Was mit deinen Antworten passiert
+
+Deine Antworten werden in deinem persönlichen Profil gespeichert (Cloudflare KV, eine Datei pro Schüler-ID). Ab der nächsten Lektion richtet dein Agent den Unterricht danach aus:
+
+- **Einsteiger** bekommen Grundlagen mit Alltagsbeispielen, erfahrene Tester erhalten kompakte, tiefere Einblicke.
+- Wer **die Prüfung** anstrebt, trainiert prüfungsnah am Syllabus; wer **Praxis** sucht, bekommt anwendbare Techniken.
+- **Konzepte zuerst, Praxis sofort oder mit Beispielen lernen** — dein bevorzugter Stil bestimmt den Aufbau jeder Einheit.
+
+So fühlt sich die ganze Schule von Anfang an wie ein Kurs an, der speziell für dich zusammengestellt wurde.
+
+## Und danach?
+
+Sobald das Interview abgeschlossen ist, markiert dein Agent die Lektion als erledigt — auf der Startseite erscheint ein Häkchen, und du kannst mit der ersten richtigen Lektion („Grundlagen des Testens") weitermachen.
+
+## Die Seiten dieser Schule im Überblick
+
+Damit du dich zurechtfindest, hier die wichtigsten Seiten und ihre Aufgabe:
+
+- **Startseite (/)** — Hier meldest du dich an und erhältst deine Schüler-ID. Hol dir ab sofort hier deinen Progress: Häkchen pro Lektion und Übung, dazu das aktuelle Bild deines Kursfortschritts.
+- **Lektionsseiten (/lessons/…)** — Jede Lektion liefert dir den Stoff als Seite plus einen fertigen **Prompt zum Kopieren**. Den fügst du in deinen KI-Agenten ein (OpenCode, Claude Code, Gemini CLI, Codex …) und arbeitest den Inhalt im Gespräch durch.
+- **Übungen (/exercises/…)** — Praktische Projekte, in denen du das Gelernte anwendest. Sie sind offener als Lektionen: Hier zählt nicht das Quiz, sondern dass dein Agent bestätigt, dass du die Aufgabe umgesetzt hast.
+- **Glossar (/glossary/)** — Die wichtigsten Fachbegriffe des Kurses mit kurzen Erklärungen, passend zum ISTQB-Syllabus.
+- **Fehlerbehebung (/troubleshooting/)** — Hilfe bei Anmeldeproblemen, fehlenden Häkchen oder wenn die Synchronisation hakt.
+- **Abmelden (/disenroll/)** — Fortschritt zurücksetzen oder die Einschreibung beenden.
+
+## Los geht's
+
+Kopiere unten den Prompt und füge ihn in deinen KI-Agenten ein. Er kümmert sich um alles Weitere: Er holt sich deinen Lernfortschritt, stellt die Interview-Fragen und speichert dein Profil.

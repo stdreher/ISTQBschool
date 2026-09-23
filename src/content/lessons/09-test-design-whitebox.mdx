@@ -1,0 +1,82 @@
+---
+title: "White-Box- und erfahrungsbasierte Techniken"
+slug: test-design-whitebox-experience
+description: "Strukturbasierte und erfahrungsbasierte Testdesign-Techniken."
+order: 9
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. White-Box-Techniken: Anweisungsüberdeckung (Statement Coverage) und
+     Zweigüberdeckung (Branch Coverage) anhand von Codebeispielen.
+
+  2. Was die einzelnen Überdeckungsgrade bedeuten („100 % Überdeckung"
+     sagt was und was Nicht), typische Prüfungsfragen zur Berechnung.
+
+  3. Erfahrungsbasierte Techniken: Fehlerraten, exploratives Testen und
+     checklistenbasiertes Testen — wann sie sich lohnen.
+
+  4. Auswahl und Mischung: Wie Testtechniken kombiniert werden und welche
+     Grenzen jede einzelne hat.
+---
+
+
+Black-Box-Techniken haben wir ausführlich behandelt — jetzt blicken wir in den Code hinein (White-Box) und anschließend auf das Wissen und die Erfahrung von Testenden (erfahrungsbasierte Techniken). Keine der drei Familien kann alles allein; die Kunst ist die richtige Mischung.
+
+## White-Box-Techniken: Anweisungs- und Zweigüberdeckung
+
+White-Box-Testen leitet Testfälle aus der **internen Struktur des Codes** ab: ausführbaren Anweisungen, Verzweigungen, Bedingungen. Zwei Überdeckungsgrade spielen im Foundation Level die Hauptrolle:
+
+**Anweisungsüberdeckung (Statement Coverage):** Jede **ausführbare Anweisung** muss mindestens einmal ausgeführt werden.
+
+**Zweigüberdeckung (Branch/Decision Coverage):** Jeder **Ausgang jeder Verzweigung** (also das „Ja" und das „Nein" jeder Entscheidung) muss mindestens einmal genommen werden.
+
+Der wichtige Zusammenhang: **100 % Zweigüberdeckung erzwingt 100 % Anweisungsüberdeckung** — aber nicht umgekehrt. Zweigüberdeckung ist also die strengere (und bessere) Metrik.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (Java):**
+>
+> ```java
+> if (punkt > 5 && vip) {
+>     rabatt = 20;
+> } else {
+>     rabatt = 5;
+> }
+> preis = preis * (1 - rabatt / 100);
+> ```
+>
+> Für 100 % **Anweisungsüberdeckung** genügt **ein** Testfall — zum Beispiel `punkt > 5 && vip == true`. Er führt dann alle drei Anweisungen aus. Für 100 % **Zweigüberdeckung** brauchst du **zwei** Testfälle: einmal den „Ja"-Zweig (Rabatt 20) und einmal den „Nein"-Zweig (Rabatt 5). Merke dir für Prüfungsfragen: Bei einfachem `if/else` ohne Sonderfälle sind es zwei Testfälle für die Zweig- und einer für die Anweisungsüberdeckung.
+
+**Trickfalle in Prüfungsfragen:** Bedingungen mit `&&`/`||` (Kurzschlussauswertung). Die Zweigüberdeckung allein kann eine Bedingung *innerhalb* einer Entscheidung ungeprüft lassen — die eigentliche Bedingungsüberdeckung (und MC/DC) ist Stoff der Advanced Levels, aber Prüfungsaufgaben verlangen oft, sie als Grenze der Zweigüberdeckung zu erkennen.
+
+> **Merkhilfe „was sagt die Zahl"** — Zwei Überdeckungsgrade, eine Frage:
+> *„Die Metrik sagt: Diese Codeteile wurden ausgeführt."* — mehr nicht. 100 % Anweisungsüberdeckung heißt **nicht** „defektfrei" (Prinzip 1!). Sie ist ein Vertrauensindikator über die *Struktur*, keine Zusicherung über das *Verhalten*.
+
+## Erfahrungsbasierte Techniken
+
+Nicht jede Antwort steckt in Anforderungen oder Code — manche steckt in den Köpfen erfahrener Testender. Drei Techniken:
+
+- **Fehlerraten (Error Guessing):** Aufgrund von Erfahrung und Faustregeln typische Fehler erraten und gezielt testen — z. B. „leere Eingabe", „0-Wert", „Sonderzeichen", „Zeitgrenzen".
+- **Exploratives Testen (Exploratory Testing):** Design, Testfall und Ausführung entstehen **gleichzeitig**, gesteuert von Wissen und Neugier. Tester entdecken das System, während sie es testen; oft in Session mit Zielvorgabe. Ideal für unbekannte, unkritische Bereiche oder wenn Zeitnot herrscht.
+- **Checklistenbasiertes Testen:** Ablaufen vordefinierter Checklisten — strukturierter als reines Ausprobieren, ohne den Aufwand formaler Techniken.
+
+**Wann sie sich lohnen:** wenn formale Techniken zu aufwendig wären, wenn Anforderungen fehlen oder unklar sind, als Zusatzschicht über systematische Techniken. **Grenze:** Die Ergebnisse hängen stark vom Können der Testenden ab und lassen sich schwerer dokumentieren und wiederholen.
+
+## Die Mischung macht's
+
+Die besten Teststrategien kombinieren alle drei Familien:
+
+- **Black-Box** stellt sicher, dass die *vereinbarte* Funktionalität stimmt.
+- **White-Box** stellt sicher, dass der *Code* ausgeführt wurde (Struktur).
+- **Erfahrungsbasiert** ergänzt, was keine Spezifikation verrät.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel (Kombination):** Für ein neues Retouren-Modul: Äquivalenzklassen/Grenzwertanalyse für die Mengenfelder (Black-Box), Zweigüberdeckung für die Rabattlogik in der Komponente (White-Box), plus eine explorative Session für die unklare Sonderfall-Kombination „Teillieferung mit Geschenkgutschein" (erfahrungsbasiert).
+
+Als Auswahlkriterien dienen: Qualität und Vollständigkeit der Anforderungen, Risiko, Komplexität, verfügbare Zeit und Können des Teams. Und immer gilt: **Ein einzelner „100 %"-Wert ist selten das Ziel — die Kombination und ihre Begründung sind es.**
+
+---
+
+Wir haben jetzt Werkzeuge genug für gutes Testdesign. Aber wer testet wann was auf welcher Basis? Damit beschäftigt sich der nächste Block: Testplanung und Risiko-Management.

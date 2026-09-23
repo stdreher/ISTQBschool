@@ -1,0 +1,49 @@
+---
+title: "Übung 01: Review eines Anforderungsausschnitts"
+slug: requirements-review
+description: "Ein formelles Review (Lektion 5) an einem Anforderungstext durchführen und die gefundenen Defekte dokumentieren."
+order: 1
+agentInstructions: |
+  Diese Übung behandelt das statische Testen in Form eines Reviews (Lektion 5: Statisches Testen).
+
+  Ablauf:
+  1. Stelle die Aufgabenstellung aus dem Inhalt der Übung vor. Erkläre kurz die Review-Rollen (Autor, Moderator, Reviewer, Schreiber) und warum Anforderungsreview früh im Lebenszyklus den größten Hebel hat.
+  2. Arbeite mit dem Lernenden den Anforderungsausschnitt systematisch durch: Defekt für Defekt, mit Begründung nach Art (Unklarheit, fehlende Bedingung, Widerspruch, Redundanz, fehlende Testbarkeit).
+  3. Erwartung an das Artefakt: Ein Review-Protokoll mit mindestens fünf gefundenen Defekten, jeweils mit Fundstelle, Defektbeschreibung, begründeter Schwere (niedrig/mittel/hoch) und einem konkreten Verbesserungsvorschlag.
+  4. Bewerte das Artefakt: Zähle nur begründete und am Text nachvollziehbare Funde als vollständig. Akzeptiere auch zusätzliche gültige Funde, die über deine eigene Erwartung hinausgehen.
+  5. Gib konstruktives Feedback und markiere die Übung erst dann als abgeschlossen, wenn das Protokoll mindestens fünf sauber begründete Defekte enthält. Markiere die Übung über die Fortschritts-API (exerciseSlug) als abgeschlossen.
+---
+{/* DRAFT */}
+
+Du hast gelernt, dass statisches Testen ohne Ausführung Defekte findet — und dass ein guter Review-Text gar nicht erst ins dynamische Testen gelangt. In dieser Übung wird umgekehrt gestrickt: Du bekommst einen Anforderungstext mit typischen Schwächen und reviewst ihn wie eine Prüferin/ein Prüfer des ISTQB-Syllabus.
+
+## Aufgabenstellung
+
+Review den folgenden Anforderungsausschnitt zu einem Login-Feature:
+
+> „Die Anmeldung muss schnell sein. Nach erfolgreicher Anmeldung wird der Benutzer
+> zur Startseite weitergeleitet. Der Benutzer kann dazu persönliche Daten einsehen.
+> Benutzer, die sich anmelden, müssen sich wieder anmelden, wenn sie 30 Minuten
+> inaktiv waren. Diese Inaktivitätsregel gilt ebenso für die Startseite. Die
+> Anmeldung muss auch mit einem mobilen Gerät funktionieren. Bei zu vielen
+> Fehlversuchen sollte der Benutzer gesperrt werden."
+
+Suche systematisch nach Defekten — denke dabei an die fünf Merkmale guter Anforderungen: **eindeutig, testbar, widerspruchsfrei, vollständig und granular** (ein Punkt pro Anforderung).
+
+## Zu erwartende Funde (Anhaltspunkte, keine Vollständigkeit)
+
+- **Nicht testbar:** „muss schnell sein" — was heißt schnell? Es fehlt ein messbarer Grenzwert.
+- **Unklar/Wer:** „Der Benutzer kann dazu persönliche Daten einsehen" — *welcher* Benutzer, *welche* Daten, und heißt „dazu" nach der Anmeldung?
+- **Redundanz/Widerspruch:** Die Inaktivitätsregel ist doppelt benannt (Login *und* Startseite) und widerspricht sich logisch: Meldet man sich von der Startseite aus nochmal an?
+- **Unvollständig:** „Bei zu vielen Fehlversuchen" — wie viele sind *zu viele*, und wie lange dauert die Sperre?
+
+## Ablauf
+
+1. Lege die Review-Rollen fest: Du bist der/die Reviewer und der Lernende moderiert (oder umgekehrt — besprich es).
+2. Geht den Text Absatz für Absatz durch und notiert Funde in Tabellenform:
+   `Nr. | Fundstelle | Defekt | Schwere | Verbesserungsvorschlag`.
+3. Sortiert die Funde am Ende nach Schweregrad.
+
+## Abschlusskriterien
+
+Dein Review-Protokoll gilt als abgeschlossen, wenn es **mindestens fünf Defekte** enthält — je Fundstelle, Begründung, Schwere und Verbesserungsvorschlag. Zusätzliche begründete Funde sind ausdrücklich erwünscht.

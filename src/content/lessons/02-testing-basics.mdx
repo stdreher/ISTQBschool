@@ -1,0 +1,98 @@
+---
+title: "Grundlagen des Testens"
+slug: testing-basics
+description: "Was Testen ist, warum es nötig ist und wie der Testprozess abläuft."
+order: 2
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Was Testen ist und welche Ziele es verfolgt — und was Testen
+     ausdrücklich NICHT ist (z. B. nicht dasselbe wie Debugging).
+
+  2. Ursachen und Wirkungen: menschlicher Fehler (Error/Mistake),
+     Defekt (Defect/Fault/Bug) und Versagensfall (Failure) — die Kette
+     und warum ein Defekt nicht immer zu einem Versagensfall führt.
+
+  3. Der Testprozess nach Syllabus v4.0 mit seinen sieben Aktivitäten:
+     Testplanung, Testüberwachung und -steuerung, Testanalyse,
+     Testdesign, Testimplementierung, Testdurchführung und
+     Testabschluss — jeweils kurz zu erklären und mit Arbeitsprodukten
+     zu verbinden.
+
+  4. Warum Testen nötig ist: Qualitätssicherung, Risikoreduktion,
+     Vertrauensbildung und Entscheidungsgrundlage — und warum Testen
+     mangelnde Qualität nicht nachträglich ersetzen kann.
+---
+
+
+Testen ist der Beruf dieses Kurses. Bevor wir uns mit Testtechniken, Werkzeugen oder Testmanagement beschäftigen, brauchen wir ein gemeinsames Fundament: Was ist Testen eigentlich, warum ist es nötig, und wie läuft es in einem typischen Projekt ab? Genau darum geht es in dieser ersten Lektion.
+
+## Was ist Testen?
+
+Testen ist eine Reihe von Aktivitäten, die darauf abzielen:
+
+- **Defekte aufzudecken**, bevor das Produkt bei echten Nutzerinnen und Nutzern ankommt,
+- die **Qualität des Testobjekts zu bewerten** und
+- **Vertrauen und eine Entscheidungsgrundlage** zu schaffen — etwa "ist der Release bereit?"
+
+Ein wichtiger ISTQB-Lehrsatz: Testen ist **nicht** dasselbe wie Debugging. Testen findet Defekte und deckt Versagensfälle auf; Debugging (Fehleranalyse und -behebung) ist dagegen die Aufgabe der Entwicklung und findet typischerweise *nach* dem Testen statt. Auch ist Testen mehr als bloßes Ausführen von Testfällen: Ein großer Teil der Testarbeit passiert vorher (Analyse, Design, Vorbereitung) und nachher (Auswertung, Bericht).
+
+Das **Testobjekt** ist der Gegenstand, der geprüft wird — ein ganzes System, eine Komponente, aber auch ein Anforderungsdokument oder ein Datenmodell. Gutes Testen prüft nicht erst Code, sondern auch die Arbeitsprodukte davor (mehr dazu in der Lektion zu statischem Testen).
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** In einem Online-Shop soll das Checkout-Feld "Postleitzahl" nur fünfstellige Zahlen akzeptieren. Testziele für dieses kleine Testobjekt sind: Wird eine gültige PLZ akzeptiert? Wird eine ungültige Eingabe abgelehnt? Zeigt das System eine verständliche Fehlermeldung?
+
+## Fehler, Defekt und Versagensfall
+
+Die ISTQB-Ausbildung unterscheidet drei Begriffe sehr genau — das ist einer der meistgeprüften Punkte:
+
+**Die Kette Fehler → Defekt → Versagensfall**
+
+1. **Menschlicher Fehler (Error/Mistake):** Ein Mensch (Entwickler, Analyst, Designer) unterliegt einem Denk- oder Handlungsfehler. Das Ergebnis ist eine fehlerhafte Handlung.
+2. **Defekt (Defect/Fault/Bug):** Aus diesem Fehler entsteht ein fehlerhaftes Arbeitsprodukt — ein falscher Codeteil, eine fehlerhafte Anforderung oder ein falsches Datenmodell. Der Defekt ist *latent*: Er existiert, verursacht aber noch keine sichtbaren Probleme.
+3. **Versagensfall (Failure):** Erst wenn der codierte Defekt ausgeführt wird, weicht das Verhalten des Systems von der Erwartung ab. Genau dieses beobachtbare Fehlverhalten nennt ISTQB einen Versagensfall.
+
+Daraus folgt eine wichtige Erkenntnis: **Ein Defekt kann existieren, ohne je einen Versagensfall auszulösen** — der fehlerhafte Codepfad wird schlicht nie erreicht. Trotzdem ist er real und muss behoben werden. Unser Ziel ist, Versagensfälle *vor* dem Release (vor der Auslieferung) zu finden.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein Entwickler vertippt sich beim Rabattlogik-Codieren und schreibt `> 10` statt `>= 10` (menschlicher Fehler). Im Code entsteht ein Defekt. Erst wenn eine Kundin einen Rabatt bei exakt 10 Artikeln einlöst, wird dieser Codepfad ausgeführt — und das System gewährt den Rabatt fälschlich nicht (Versagensfall). Vorher war der Defekt unsichtbar.
+
+## Der Testprozess (Syllabus v4.0)
+
+Der Syllabus 2023/2024 (v4.0) beschreibt den Testprozess mit **sieben Aktivitäten**. Sie sind nicht zwingend streng nacheinander auszuführen; je nach Modell laufen sie teilweise parallel oder iterativ:
+
+1. **Testplanung** — Testziele festlegen und einen Ansatz wählen, der diese Ziele unter den gegebenen Rahmenbedingungen erreicht. Arbeitsprodukt: der Testplan.
+2. **Testüberwachung und -steuerung** — laufender Abgleich zwischen Plan und Fortschritt; bei Abweichung steuern (Teststopp, Neueinschätzung). Ergebnis: Testfortschrittsberichte.
+3. **Testanalyse** — die Testbasis (Anforderungen, Spezifikationen) prüfen und "was ist zu testen?" beantworten. Es entstehen Testbedingungen und Abdeckungspunkte.
+4. **Testdesign** — Testfälle zu den Testbedingungen entwerfen, Testdaten festlegen, die Testumgebung planen: "wie testen wir?"
+5. **Testimplementierung** — alles Erforderliche für die Durchführung bereitstellen: Testskripte, Testdaten, Stubs, Treiber, Reihenfolgeplan.
+6. **Testdurchführung** — Testfälle ausführen, Ergebnisse auswerten, Defektberichte und Testprotokolle schreiben.
+7. **Testabschluss** — am Projektmeilenstein: Abschlussbericht, offene Defekte klären, Brauchbares für künftige Projekte sichern.
+
+{/* * Merkhilfe für die Prüfung * */}
+
+> **Prüfungs-Merkhilfe:** Plan → Überwachen/Steuern → Analysieren → Entwerfen → Implementieren → Ausführen → Abschließen. In Multiple-Choice-Fragen wird oft verlangt, Aktivität und Arbeitsprodukt zuzuordnen (z. B. Testfortschrittsbericht → Überwachung, Defektbericht → Durchführung).
+
+## Warum Testen nötig ist
+
+Testen ist notwendig, weil Software von Menschen entwickelt wird — und Menschen machen Fehler. Diese Fehler führen zu Defekten, deren Versagensfälle von harmlos bis katastrophal reichen können: von einem kosmetischen Darstellungsfehler bis zu Datenverlust oder gar Gefahr für Menschenleben (z. B. in Medizingeräten oder der Flugsicherung).
+
+Testen leistet dabei vier Dinge:
+
+- **Qualitätssicherung:** Es bestätigt, dass das Produkt die Spezifikation erfüllt und für den geplanten Einsatz geeignet ist.
+- **Risikoreduktion:** Untersuchungen stützen die Einschätzung von Produkt- und Projektrisiken.
+- **Vertrauen und Entscheidungsgrundlage:** Ergebnisse helfen dem Management, "release oder nicht?" zu entscheiden.
+- **Defektvermeidung:** Frühzeitige Tests (zum Beispiel Reviews von Anforderungen) verhindern, dass Defekte überhaupt erst entstehen.
+
+Ein entscheidendes Missverständnis gilt es auszuräumen: **Testen kann mangelnde Qualität nicht nachträglich einbauen.** Wenn etwas falsch spezifiziert oder schlecht codiert wurde, macht Testen es nicht besser — Testen deckt nur auf, was ist. Qualität entsteht durch gute Anforderungen, gutes Design und gutes Code-Schreiben; Testen sichert sie ab.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein Login-Dialog ist ohne Sicherheitsanforderungen spezifiziert. Tester können noch so gründlich testen — ein fehlendes Limit für Fehlversuche finden sie zwar als Defekt, aber "mehr testen" baut die Sicherheit nicht ein. Die Lektion: Testen informiert, Qualität entsteht vorher.
+
+---
+
+Das war das Fundament. In der nächsten Lektion schauen wir uns die sieben Testprinzipien und die Psychologie des Testens an — warum Tests manchmal als Bedrohung empfunden werden und wie man damit professionell umgeht.

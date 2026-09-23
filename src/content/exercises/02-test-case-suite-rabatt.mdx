@@ -1,0 +1,43 @@
+---
+title: "Übung 02: Testfallsammlung für einen Rabattrechner"
+slug: test-case-suite-rabatt
+description: "Äquivalenzklassen, Grenzwertanalyse und Entscheidungstabellen (Lektionen 6–9) auf eine Rabattlogik anwenden und die Abdeckung berechnen."
+order: 2
+agentInstructions: |
+  Diese Übung wendet die Black-Box- und White-Box-Techniken aus den Lektionen 6, 7 und 9 auf eine definierte Rabattlogik an.
+
+  Ablauf:
+  1. Stelle die Rabattspezifikation aus dem Inhalt vor. Kläre, dass es um Berechnungen geht (müssen exakt stimmen) und dass Klassengrenzen die typische Fehlerquelle sind.
+  2. Lass den Lernenden in dieser Reihenfolge arbeiten: (a) Äquivalenzklassen für den Bestellwert bilden, (b) Grenzwertanalyse an allen Grenzen (2-Wert und 3-Wert), (c) Entscheidungstabelle für die Rabattlogik mit Konsolidierung, (d) Abdeckungsberechnung.
+  3. Prüfe die Ergebnisse fachlich: Korrekte Klassenanzahl, korrekte Grenzwerte einschließlich der unmittelbaren Nachbarn, konsolidierte Regeln ohne „Doppelzählungen", korrekte Anzahl der Testfälle für 100 % Abdeckung.
+  4. Bewerte das Artefakt, nenne nachvollziehbare Korrekturen, und markiere die Übung erst abgeschlossen, wenn Bestellwert-Klassen, Grenzwerte und die konsolidierte Entscheidungstabelle stimmig sind. Markiere über die Fortschritts-API (exerciseSlug).
+---
+{/* DRAFT */}
+
+Jetzt verbindest du alle drei Black-Box-Sektionen mit einer echten Minispezifikation. Ziel ist eine **schulbuchtaugliche Testfallsammlung** — wie in ISTQB-Prüfungsaufgaben, nur mit Begründung.
+
+## Spezifikation: Rabattrechner
+
+Der Rabattrechner prüft Bestellwerte und vergibt Rabatte nach folgenden Regeln:
+
+1. Ein Bestellwert wird akzeptiert, wenn er zwischen **0,01 € und 9.999,99 €** liegt (beide inklusive). Alles darunter oder darüber wird mit einer Fehlermeldung abgewiesen.
+2. **VIP-Kunden** mit einem Bestellwert **über 1.000 €** erhalten **20 % Rabatt** auf den gesamten Bestellwert.
+3. Ein **Gutschein** wird eingelöst, wenn er für Beträge zwischen **50,00 € und 200,00 €** gültig ist (inklusive) — 10 € Erlass, nur einmal pro Bestellung.
+4. Gutschein und 20 %-Rabatt **schließen sich aus**: Der Gutschein hat Vorrang.
+
+## Aufgabenstellung
+
+1. **Äquivalenzklassen:** Bilde gültige und ungültige Klassen für das Feld „Bestellwert". Begründe jede Klasse mit dem erwarteten Systemverhalten. Wie viele Testfälle braucht die minimale 100-%-Abdeckung?
+2. **Grenzwertanalyse:** Bestimme für den Bestellwert die Grenzwerte und unmittelbaren Nachbarn (2-Wert-Methode *und* 3-Wert-Methode). Berechne die Testfallanzahl je Methode. Achte auch auf die Gutschein-Grenzen **50,00 €** und **200,00 €**.
+3. **Entscheidungstabelle:** Erstelle die Entscheidungstabelle für die Rabattlogik. Bedingungen: `VIP`, `Bestellwert > 1.000 €`, `Gutschein aktiv`. Konsolidiere Regeln mit „egal"-Feldern. Wie viele Testfälle bleiben wirklich übrig?
+4. **Abdeckung:** Notiere für jede Technik die erreichte Abdeckung (Äquivalenzklassen-Abdeckung 100 %, Grenzwerte, Entscheidungstabellen-Abdeckung) und die Gesamtzahl der Testfälle, wenn du alle drei Techniken *getrennt* anwendest.
+
+## Ablauf und Abnahme
+
+- Arbeite in der Reihenfolge oben; zeige Zwischenergebnisse, bevor du weitermachst.
+- Gib alle Antworten als Tabelle aus: `Testfall-Nr. | Eingabe | Technik | Abgedeckte Klasse/Regel/Grenze | Erwartetes Ergebnis`.
+- Halte am Ende fest: *Welche Technik hätte man weglassen können und warum (nicht)?*
+
+## Abschlusskriterien
+
+Die Übung ist abgeschlossen, wenn die Testfallsammlung vollständig und begründet ist: alle Klassen samt ungültiger Vertreter, korrekte Grenzwerte (2-Wert und 3-Wert), eine konsolidierte Entscheidungstabelle mit korrekter Rest-Regelanzahl und die nachvollziehbare Abdeckungsberechnung.

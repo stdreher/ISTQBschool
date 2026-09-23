@@ -20,7 +20,7 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
     <!-- Card itself sits above the particle layer -->
     <div class="theme-card-band rounded-2xl overflow-hidden" style="aspect-ratio:85.6/54; position:relative; z-index:2;">
       <div class="flex flex-col justify-between h-full px-7 py-5">
-        <p class="text-xs font-mono uppercase tracking-[0.3em] opacity-80">Student ID</p>
+        <p class="text-xs font-mono uppercase tracking-[0.3em] opacity-80">Studierenden-ID</p>
         <p id="student-id-display" class="text-2xl font-mono font-bold tracking-tight"></p>
       </div>
     </div>
@@ -29,13 +29,13 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
   <!-- Page header: hidden once enrolled -->
   <div id="page-header" class="mb-8">
     <p class="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-      Welcome! This is an interactive, self-paced course. Enroll to get started.
+      Willkommen! Dies ist ein interaktiver Kurs in deinem eigenen Tempo. Melde dich an, um loszulegen.
     </p>
   </div>
 
   <!-- Enrolled: lesson list -->
   <div id="enrolled-section" class="hidden mb-12">
-    <h2 class="text-sm font-mono uppercase tracking-wider text-gray-500 dark:text-gray-500 mb-4">Lessons</h2>
+    <h2 class="text-sm font-mono uppercase tracking-wider text-gray-500 dark:text-gray-500 mb-4">Lektionen</h2>
 
     <ol class="divide-y divide-gray-200 dark:divide-stone-800">
       {lessons.map((lesson) => {
@@ -61,7 +61,7 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
                     isStub && "text-gray-400 dark:text-gray-600",
                   ]}>
                     {lesson.data.title}
-                    {isStub && <span class="ml-2 text-xs font-normal text-gray-400 dark:text-gray-600">(coming soon)</span>}
+                    {isStub && <span class="ml-2 text-xs font-normal text-gray-400 dark:text-gray-600">(in Kürze)</span>}
                   </h3>
                   <p class="lesson-description mt-0.5 text-sm text-gray-500 dark:text-gray-500">{lesson.data.description}</p>
                 </div>
@@ -70,7 +70,7 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
                 href={href}
                 class="lesson-cta theme-button hidden shrink-0 rounded-lg px-3 py-2 text-center font-mono text-sm"
               >
-                Continue
+                Weiter
               </a>
             </div>
           </li>
@@ -78,10 +78,10 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
       })}
     </ol>
 
-    <h2 class="text-sm font-mono uppercase tracking-wider text-gray-500 dark:text-gray-500 mb-4 mt-10">Exercises</h2>
+    <h2 class="text-sm font-mono uppercase tracking-wider text-gray-500 dark:text-gray-500 mb-4 mt-10">Übungen</h2>
     <p class="text-sm text-gray-500 dark:text-gray-500 mb-4">
-      Hands-on projects where you apply what you've learned to build real things.
-      <a href="/exercises" class="theme-link underline underline-offset-2">Learn more</a>
+      Praktische Projekte, in denen du das Gelernte anwendest und etwas Echtes baust.
+      <a href="/exercises" class="theme-link underline underline-offset-2">Mehr erfahren</a>
     </p>
 
     <ol class="divide-y divide-gray-200 dark:divide-stone-800">
@@ -108,7 +108,7 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
                     isStub && "text-gray-400 dark:text-gray-600",
                   ]}>
                     {exercise.data.title}
-                    {isStub && <span class="ml-2 text-xs font-normal text-gray-400 dark:text-gray-600">(coming soon)</span>}
+                    {isStub && <span class="ml-2 text-xs font-normal text-gray-400 dark:text-gray-600">(in Kürze)</span>}
                   </h3>
                   <p class="exercise-description mt-0.5 text-sm text-gray-500 dark:text-gray-500">{exercise.data.description}</p>
                 </div>
@@ -128,48 +128,63 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
         id="enroll-button"
         class="rainbow-bg cursor-pointer rounded-lg px-10 py-4 font-mono font-semibold text-2xl disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Enroll
+        Anmelden
       </button>
       <p class="text-sm text-gray-500 dark:text-stone-500 mt-4">
-        Free. No account required. No personal data collected.
+        Kostenlos. Kein Konto nötig. Keine personenbezogenen Daten.
       </p>
     </div>
 
     <div id="enroll-step-color" class="hidden">
-      <p id="color-picker-copy" class="text-sm text-gray-600 dark:text-stone-400 mb-4">Choose a color for your student ID card and site theme.</p>
+      <p id="color-picker-copy" class="text-sm text-gray-600 dark:text-stone-400 mb-4">Wähle eine Farbe für deinen Ausweis und das Design der Website.</p>
       <div id="color-picker" class="grid grid-cols-6 gap-2 not-prose">
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="red"     aria-label="Red"     title="Red"     style="background:#dc2626;--i:0"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="red"     aria-label="Rot"     title="Rot"     style="background:#dc2626;--i:0"></button>
         <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="orange"  aria-label="Orange"  title="Orange"  style="background:#ea580c;--i:1"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="amber"   aria-label="Amber"   title="Amber"   style="background:#b45309;--i:2"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="yellow"  aria-label="Yellow"  title="Yellow"  style="background:#ca8a04;--i:3"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="lime"    aria-label="Lime"    title="Lime"    style="background:#4d7c0f;--i:4"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="green"   aria-label="Green"   title="Green"   style="background:#15803d;--i:5"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="emerald" aria-label="Emerald" title="Emerald" style="background:#059669;--i:6"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="teal"    aria-label="Teal"    title="Teal"    style="background:#0f766e;--i:7"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="amber"   aria-label="Bernstein"   title="Bernstein"   style="background:#b45309;--i:2"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="yellow"  aria-label="Gelb"  title="Gelb"  style="background:#ca8a04;--i:3"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="lime"    aria-label="Limette"    title="Limette"    style="background:#4d7c0f;--i:4"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="green"   aria-label="Grün"   title="Grün"   style="background:#15803d;--i:5"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="emerald" aria-label="Smaragd" title="Smaragd" style="background:#059669;--i:6"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="teal"    aria-label="Petrol"    title="Petrol"    style="background:#0f766e;--i:7"></button>
         <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="cyan"    aria-label="Cyan"    title="Cyan"    style="background:#0e7490;--i:8"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="sky"     aria-label="Sky"     title="Sky"     style="background:#0284c7;--i:9"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="blue"    aria-label="Blue"    title="Blue"    style="background:#2563eb;--i:10"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="sky"     aria-label="Himmelblau"     title="Himmelblau"     style="background:#0284c7;--i:9"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="blue"    aria-label="Blau"    title="Blau"    style="background:#2563eb;--i:10"></button>
         <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="indigo"  aria-label="Indigo"  title="Indigo"  style="background:#4f46e5;--i:11"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="violet"  aria-label="Violet"  title="Violet"  style="background:#7c3aed;--i:12"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="purple"  aria-label="Purple"  title="Purple"  style="background:#9333ea;--i:13"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="fuchsia" aria-label="Fuchsia" title="Fuchsia" style="background:#c026d3;--i:14"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="pink"    aria-label="Pink"    title="Pink"    style="background:#db2777;--i:15"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="rose"    aria-label="Rose"    title="Rose"    style="background:#e11d48;--i:16"></button>
-        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="slate"   aria-label="Slate"   title="Slate"   style="background:#475569;--i:17"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="violet"  aria-label="Violett"  title="Violett"  style="background:#7c3aed;--i:12"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="purple"  aria-label="Lila"  title="Lila"  style="background:#9333ea;--i:13"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="fuchsia" aria-label="Fuchsie" title="Fuchsie" style="background:#c026d3;--i:14"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="pink"    aria-label="Rosa"    title="Rosa"    style="background:#db2777;--i:15"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="rose"    aria-label="Altrosa"    title="Altrosa"    style="background:#e11d48;--i:16"></button>
+        <button type="button" class="enrollment-color-option h-12 w-full rounded-xl border-2 border-transparent shadow-sm" data-theme-color="slate"   aria-label="Schiefer"   title="Schiefer"   style="background:#475569;--i:17"></button>
       </div>
-      <p id="enroll-error" class="mt-2 text-red-500 text-sm hidden">Something went wrong. Please try again.</p>
+      <p id="enroll-error" class="mt-2 text-red-500 text-sm hidden">Etwas ist schiefgelaufen. Bitte versuche es erneut.</p>
     </div>
   </div>
 
   <!-- Orientation content (always visible) -->
   <div class="prose dark:prose-invert max-w-none">
-    <!-- TODO: Replace this section with content about your school's subject -->
+    <h2>So funktioniert's</h2>
 
-    <h2>How it works</h2>
+    <h3>1. Anmeldung im Browser</h3>
+    <p>Die Schüler beginnen im Browser. Sie besuchen die Website der Schule, informieren sich über das Unterrichtsangebot und melden sich an. Die Anmeldung erfolgt sofort: Sie wählen eine Farbe aus, klicken auf eine Schaltfläche und erhalten eine eindeutige Schüler-ID wie beispielsweise „curious-atom-4017". Ihre Anmeldedaten werden in einem Cloudflare-KV-Speicher abgelegt.</p>
 
-    <p>Enroll above, then use your AI agent of choice to work through the lessons. Each lesson page has a prompt you copy and paste into your agent. The agent reads the lesson, teaches the material, quizzes you, and marks the lesson complete, which syncs back to this page in real time.</p>
+    <h3>2. Lernen mit dem KI-Agenten deiner Wahl</h3>
+    <p>Anschließend wechseln sie zu dem KI-Agenten ihrer Wahl, um sich in die Materie zu vertiefen und mit dem Lernen zu beginnen. Dies funktioniert mit <a href="https://opencode.ai">OpenCode</a>, Claude Code, Gemini CLI, Codex oder jedem anderen KI-Tool, das URLs abrufen und eine Unterhaltung führen kann. Die Schüler kopieren eine kurze Eingabeaufforderung von der Website und fügen sie in ihren Agenten ein. Die Eingabeaufforderung enthält die Schüler-ID und einen Link zur Discovery-Datei der Schule. Der Agent liest diese Datei, ermittelt die API der Schule, ruft den Lernfortschritt des Schülers ab und ist bereit für den Unterricht.</p>
 
-    <p>Works with <a href="https://opencode.ai">OpenCode</a>, Claude Code, Gemini CLI, Codex, and other AI tools that can fetch URLs and hold a conversation.</p>
+    <h3>3. Erste Lektion: das Interview</h3>
+    <p>Die erste Lektion ist ein Interview. Der Agent befragt den Schüler zu seinem Erfahrungsstand, seinem bevorzugten Lernstil, dem gewünschten Detaillierungsgrad sowie zu fachspezifischen Fragen, die vom Ersteller der Schule definiert wurden. Alle Antworten sind optional. Sie werden im Profil des Schülers gespeichert und prägen jede folgende Lektion.</p>
+
+    <h3>4. Flexibles Lernen in deinem eigenen Tempo</h3>
+    <p>Von hier aus arbeiten sich die Schüler auf flexible und ansprechende Weise durch den Kursstoff innerhalb ihres Agenten. Sie lernen in ihrem eigenen Tempo, stellen beliebige Fragen und gestalten den Kurs im Laufe des Lernprozesses nach ihren Vorlieben. Der Agent passt seinen Unterricht an das Profil des Schülers an: Ein Anfänger erhält gründliche Erklärungen von Grund auf, ein Experte bekommt prägnante technische Details. Wer praktisches Lernen bevorzugt, stürzt sich direkt in die Praxis, während ein Lernender, der Konzepte vorzieht, zuerst die Theorie und dann die Praxis erhält.</p>
+
+    <h3>5. Erst lernen, dann Quiz</h3>
+    <p>Jede Lektion folgt dem Ablauf „Erst lernen, dann Quiz". Der Agent behandelt den Stoff im Gesprächsstil und macht Pausen, damit sich der Lernende mit jedem Thema auseinandersetzen kann. Anschließend stellt er Multiple-Choice-Quizfragen. Nachdem der Lernende geantwortet hat, bespricht der Agent falsche Antworten auf freundliche Weise. Die Lektion wird unabhängig vom Quiz-Ergebnis als abgeschlossen markiert: Quizze dienen dem Lernen, nicht der Auswahl.</p>
+
+    <h3>6. Fortschritt in Echtzeit</h3>
+    <p>Der Lernfortschritt wird in Echtzeit synchronisiert. Wenn der Agent eine Lektion über die API als abgeschlossen markiert, aktualisiert sich der Browser innerhalb einer Sekunde: Häkchen erscheinen, und die Seite springt zur nächsten Lektion. Die Lernenden arbeiten in ihrem Agenten, sehen ihren Fortschritt jedoch währenddessen auf der Website widergespiegelt.</p>
+
+    <h3>7. Übungen</h3>
+    <p>Die Schule unterstützt außerdem Übungen: frei gestaltbare Projekte, in denen die Lernenden das Gelernte anwenden. Übungen sind weniger strukturiert als Lektionen und haben weiter gefasste Kriterien für den Abschluss.</p>
   </div>
 
   <!-- Bottom enroll CTA: hidden once enrolled -->
@@ -179,10 +194,10 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
       id="enroll-button-bottom"
       class="rainbow-bg cursor-pointer rounded-lg px-10 py-4 font-mono font-semibold text-2xl disabled:opacity-50 disabled:cursor-not-allowed"
     >
-      Enroll
+      Anmelden
     </button>
     <p class="text-sm text-gray-500 dark:text-stone-500 mt-4">
-      Free. No account required. No personal data collected.
+      Kostenlos. Kein Konto nötig. Keine personenbezogenen Daten.
     </p>
   </div>
 
@@ -383,13 +398,13 @@ const exercises = (await getCollection("exercises")).sort((a, b) => a.data.order
           setSelectedTheme(opt.getAttribute("data-theme-color"));
           // Scroll to top so the student ID card and enrolled state are visible
           window.scrollTo({ top: 0, behavior: "smooth" });
-          setPickerState("Generating your student ID...", true);
+            setPickerState("Deine Studierenden-ID wird erzeugt ...", true);
           try {
             var data = await window.school.enroll();
             showEnrolled(data.studentId, true, false);
           } catch (e) {
             enrollError.classList.remove("hidden");
-            setPickerState("Choose a color for your student ID card and site theme.", false);
+            setPickerState("Wähle eine Farbe für deinen Ausweis und das Design der Website.", false);
             isSubmitting = false;
           }
         });

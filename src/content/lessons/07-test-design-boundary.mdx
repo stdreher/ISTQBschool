@@ -1,0 +1,79 @@
+---
+title: "Testdesign II: Grenzwertanalyse und Entscheidungstabellen"
+slug: test-design-boundary-decision-tables
+description: "Grenzwertanalyse und entscheidungstabellenbasierte Tests."
+order: 7
+quiz: true
+agentInstructions: |
+  Deck diese vier Themen ab:
+
+  1. Grenzwertanalyse: warum Fehler an Grenzen lauern, wie die
+     Mindest- und Maximalwerte inkl. ihrer direkten Nachbarn getestet
+     werden (2-Wert- und 3-Wert-Grenzwertanalyse).
+
+  2. Entscheidungstabellen: Bedingungen, Aktionen, Regeln — wie
+     Kombinationen als Testfälle erfasst werden.
+
+  3. Vereinfachung: Konsolidierung von Regeln (…), minimale Abdeckung
+     und wie viele Testfälle tatsächlich nötig sind.
+
+  4. Anwendung auf Beispiele aus Alltag und Prüfung; Abgrenzung zu
+     Äquivalenzklassen.
+---
+
+
+Auf der letzten Lektion stehen die Äquivalenzklassen — wo wir „innen" getestet haben. Jetzt verlagern wir den Fokus nach außen und oben: auf die *Ränder* der Klassen (Grenzwertanalyse) und auf Regelwerke mit vielen Bedingungen (Entscheidungstabellen).
+
+## Grenzwertanalyse (Boundary Value Analysis, BVA)
+
+Empirie und Syllabus sind sich einig: **Die meisten Fehler sitzen an den Grenzen.** `>= 10` statt `> 10`, ein um eins verschobener Grenzwert — solche „Off-by-one"-Defekte sind Alltag. Die Grenzwertanalyse prüft deshalb gezielt die Werte *an* und *unmittelbar neben* jeder Grenze.
+
+Der Syllabus kennt zwei Ausprägungen:
+
+- **2-Wert-Grenzwertanalyse:** Für jede Grenze wird der Grenzwert selbst plus der direkt *jenseits* der Grenze liegende Wert getestet.
+- **3-Wert-Grenzwertanalyse:** Für jede Grenze werden drei Werte getestet: der Wert direkt *unterhalb*, der Wert *auf* der Grenze und der Wert direkt *oberhalb*.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Ein Feld akzeptiert Werte von 1 bis 10 (beide inklusive).
+> 2-Wert-BVA: untere Grenze → `1` und `0`; obere Grenze → `10` und `11` → **4 Testfälle**.
+> 3-Wert-BVA: untere Grenze → `0`, `1`, `2`; obere Grenze → `9`, `10`, `11` → **6 Testfälle**.
+
+Die BVA baut auf die **Äquivalenzklassen der letzten Lektion auf**: Erst Klassen bilden, dann die Grenzen zwischen ihnen mit BVA scharf abprüfen. Werte in Prüfungsfragen zu zählen, ist reine Rechenübung — merke dir: 2-Wert = 2 pro Grenze, 3-Wert = 3 pro Grenze.
+
+> **Prüfungs-Tipp:** Häufig wird gefragt, welcher Wert „nicht" zur BVA gehört. Grenzwerte sind die Werte *an* und *neben* der Grenze — ein Wert locker in der Mitte der Klasse ist Sache der EP, nicht der BVA.
+
+## Entscheidungstabellen (Decision Tables)
+
+Manche Regeln hängen von mehreren Bedingungen gleichzeitig ab — etwa Bonuslogik: „VIP-Kunde UND Umsatz über 1.000" oder „Neukunde ODER Empfehlung". Solche Logik in Textform zu testen ist fehleranfällig; eine **Entscheidungstabelle** macht sie sichtbar.
+
+Eine Entscheidungstabelle besteht aus:
+
+- **Bedingungen** (Zeilen oben): mögliche Wahr/Falsch-Kombinationen der Eingaben,
+- **Aktionen** (Zeilen unten): was das System tut,
+- **Regeln** (Spalten): jede Spalte kombiniert Bedingungswerte mit den daraus folgenden Aktionen.
+
+**Vorgehen:**
+
+1. Alle relevanten **Bedingungen** und **Aktionen** identifizieren.
+2. Eine **Regel pro Bedingungskombination** aufstellen.
+3. Bei n Bedingungen entstehen zunächst bis zu **2ⁿ Regeln**.
+4. **Konsolidieren:** Kombinationen, die zur *gleichen* Aktion führen und sich nur in einer Bedingung unterscheiden, deren Wert egal ist, werden zu einer Regel mit „egal" (−) zusammengefasst.
+5. **Pro Regel mindestens einen Testfall** entwerfen → 100 % Entscheidungstabellen-Abdeckung.
+
+{/* * Beispiel aus der ISTQB-Welt * */}
+
+> **Praxisbeispiel:** Rabatt von 20 %, wenn der Kunde VIP **und** der Bestellwert über 1.000 € liegt; sonst kein Rabatt. Zwei Bedingungen → 4 Regeln. Da nur die Kombination „beide wahr" Rabatt gewährt, lassen sich die drei übrigen Regeln, die alle „kein Rabatt" ergeben, konsolidieren — die Tabelle fällt auf **2 Regeln** zusammen (eine mit „egal"-Feldern für den Nicht-Rabatt-Fall).
+> Ergebnis für die Prüfung: 2 Testfälle decken die Logik vollständig ab.
+
+**Stolperfallen:**
+
+- **Falsch gezählt:** „Egal"-Felder zählen nicht als eigene Regeln — nach der Konsolidierung zählt die tatsächlich verbleibende Anzahl.
+- **Bedingungen ≠ Eingabewerte:** Die Tabelle erfasst Kombinationen von Bedingungen; die Wertebereiche einzelner Eingaben gehören in die Äquivalenzklassen.
+- Der Klassiker in Prüfungsfragen: Eine konsolidierte Tabelle mit „egal"-Feldern zu erkennen, statt weiterhin 4 Regeln zu behaupten.
+
+> **Prüfungs-Merkhilfe:** **Bedingungen + Aktionen + Regeln.** Vollständige Tabelle = 2ⁿ Regeln **vor** Konsolidierung; nachher zählt, was wirklich übrig bleibt.
+
+---
+
+Zwei starke Black-Box-Werkzeuge sind drin. Als nächstes schauen wir uns Systeme an, die in verschiedenen Zuständen leben — Zustandsvorgangs- und Anwendungsfalltests.
