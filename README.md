@@ -1,35 +1,51 @@
-# school-template
+# Liesmich – Telekolleg ISTQB Certified Tester
 
-A template for building interactive, agent-driven schools on any topic.
+## Sinn und Zweck dieser OpenSchool-Variante
 
-Students enroll for free with one click, get a unique student ID, paste a custom prompt into their AI agent of choice, and embark on interactive and individually-tailored learning journeys. Works with OpenCode, Claude Code, Codex, Gemini, and most other AI agent harnesses.
+Diese OpenSchool-Variante dient als interaktive Lernumgebung für Inhalte des **ISTQB® Certified Tester Foundation Level**.
+Sie richtet sich an Einsteigerinnen und Einsteiger, Tester:innen, Entwickler:innen sowie Testmanager:innen, die ihr Wissen strukturiert aufbauen, auffrischen oder gezielt für die Zertifizierungsprüfung trainieren möchten.
 
-Based on the architecture of [OpenCode School](https://opencode.school).
+Im Mittelpunkt steht eine Kombination aus:
 
-## Quick start
+- browserbasierter Kursoberfläche,
+- KI-gestützter, dialogischer Vermittlung der Lerninhalte,
+- praxisnahen Übungen,
+- und nachvollziehbarer Lernfortschritts-Verfolgung.
 
-To get started creating your own school, copy and paste this prompt into your agentic coding tool of choice:
+## Didaktischer Ansatz
 
-> Let's create a new school!
->
-> Fetch https://github.com/opencodeschool/school-template/blob/main/skill/SKILL.md for instructions.
+Nach der Einschreibung erhalten Lernende eine eindeutige Lern-ID und arbeiten mit einem frei wählbaren KI-Agenten (z. B. Claude, Codex, Gemini oder vergleichbare Tools).
+Der Agent passt die Vermittlung an den individuellen Hintergrund an – etwa Vorerfahrung, Lernziel und bevorzugten Lernstil.
 
-The agent will walk you through the full process: cloning the template, defining your school's subject, designing the interview, planning lessons, and authoring content together.
+Jede Lerneinheit folgt dem Prinzip:
 
-Not using a coding agent yet? Check out [OpenCode School](https://opencode.school) to learn OpenCode, a free, open-source AI coding agent that works with models from Anthropic, OpenAI, Gemini, and others.
+1. Thema verstehen
+2. Inhalte anwenden
+3. Wissen über Quizfragen und Aufgaben festigen
 
-## How it works
+Die Schulung ist dadurch zugleich **prüfungsorientiert** (ISTQB-Syllabus) und **praxisnah** (übertragbar auf reale Testarbeit im Projektalltag).
 
-Students start in the browser. They visit the school website, learn what it teaches, and enroll. Then they move into their AI agent to dive in and start learning at their own pace. An interview captures their preferences, and the agent adapts its teaching style from there: beginners get thorough explanations, experts get concise details, hands-on learners jump straight into doing things.
+## Inhaltlicher Fokus
 
-Each lesson follows a teach-then-quiz flow. The agent covers the material conversationally, quizzes the student, and marks the lesson complete. Progress syncs to the website in real time. The school also supports exercises: open-ended projects where students apply what they've learned.
+Die Schule deckt zentrale Foundation-Level-Themen ab, unter anderem:
 
-## Stack
+- Grundlagen und Prinzipien des Softwaretestens,
+- Testen im Lebenszyklus,
+- statische Testverfahren,
+- Testentwurfsverfahren (z. B. Äquivalenzklassen, Grenzwerte, Zustandsübergänge),
+- White-Box- und erfahrungsbasierte Techniken,
+- Testplanung, Risikomanagement, Überwachung und Abschluss,
+- Werkzeuge im Testkontext.
 
-- [Astro](https://astro.build) — static site framework with SSR
-- [Cloudflare Workers](https://workers.cloudflare.com) — edge hosting
-- [Cloudflare KV](https://developers.cloudflare.com/kv/) — student progress storage
-- [Tailwind CSS](https://tailwindcss.com) — styling
-- [MDX](https://mdxjs.com/) — lesson content format
+Ergänzend vertiefen Übungen den Lernstoff über realitätsnahe Szenarien wie Anforderungsreviews, Testfallspezifikation, Defektberichte, Metriken und Testpläne.
 
-See [skill/SKILL.md](skill/SKILL.md) for the full architecture and scaffolding workflow.
+## Nutzen für Lernende und Teams
+
+Diese ISTQB-OpenSchool unterstützt dabei,
+
+- Fachbegriffe sicher zu beherrschen,
+- Testmethoden gezielt auszuwählen,
+- Qualitätssicherung systematisch zu denken,
+- und sich effektiv auf die Foundation-Level-Prüfung vorzubereiten.
+
+Damit eignet sich die Variante sowohl für individuelles Lernen als auch für begleitete Schulungskontexte in Teams, Weiterbildung und Telekolleg-ähnlichen Ausbildungsformaten.
