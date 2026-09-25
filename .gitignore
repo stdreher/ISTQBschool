@@ -3,5 +3,6 @@ dist/
 .astro/
 .wrangler/
 .env
+.log
 .dev.vars
 public/og/
