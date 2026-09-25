@@ -41,6 +41,8 @@ const next = currentIndex < allExercises.length - 1 ? allExercises[currentIndex 
     <span id="exercise-completed-text">Du hast diese Übung abgeschlossen!</span>
   </div>
 
+  <AgentPrompt title={exercise.data.title} />
+
   <div id="exercise-enroll-nudge" class="hidden mb-8 rounded-xl theme-banner px-6 py-5">
     <p class="text-base font-medium mb-1">Diese Übung funktioniert am besten mit einem KI-Agenten</p>
     <p class="text-sm opacity-80 mb-3">Schreibe dich ein, um eine Schüler-ID zu erhalten. Füge anschließend den Prompt der Übung in deinen KI-Agenten ein, und er begleitet dich Schritt für Schritt durch dieses Projekt.</p>
@@ -50,8 +52,6 @@ const next = currentIndex < allExercises.length - 1 ? allExercises[currentIndex 
   <article class="prose dark:prose-invert max-w-none">
     <Content />
   </article>
-
-  <AgentPrompt title={exercise.data.title} />
 
   <!-- Exercise action: combined mark-complete + next-exercise button -->
   <div id="exercise-action" class="mt-10 pt-6 border-t border-gray-200 dark:border-stone-800 hidden">

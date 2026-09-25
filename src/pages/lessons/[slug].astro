@@ -41,6 +41,8 @@ const next = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1]
     <span id="lesson-completed-text">Du hast diese Lektion abgeschlossen!</span>
   </div>
 
+  <AgentPrompt title={lesson.data.title} />
+
   <div id="lesson-enroll-nudge" class="hidden mb-8 rounded-lg border border-gray-200 dark:border-stone-700 px-4 py-3 text-sm text-gray-600 dark:text-stone-400">
     <a href="/" class="theme-link font-medium underline underline-offset-2">Kostenlos einschreiben</a>, um deinen Fortschritt im Kurs zu verfolgen.
   </div>
@@ -48,8 +50,6 @@ const next = currentIndex < allLessons.length - 1 ? allLessons[currentIndex + 1]
   <article class="prose dark:prose-invert max-w-none">
     <Content />
   </article>
-
-  <AgentPrompt title={lesson.data.title} />
 
   <!-- Agent-only notice: shown for lessons that can only be completed in OpenCode -->
   {lesson.data.agentOnly && (
