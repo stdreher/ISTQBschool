@@ -4,32 +4,32 @@ export const prerender = true;
 import Base from "../layouts/Base.astro";
 ---
 
-<Base title="Troubleshooting" description="Tips for solving common problems.">
+<Base title="Fehlerbehebung" description="Tipps zur Lösung häufiger Probleme.">
   <div class="mb-6">
     <a href="/" class="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-      &larr; Home
+      &larr; Startseite
     </a>
   </div>
 
   <header class="mb-8">
-    <h1 class="text-3xl font-bold">Troubleshooting</h1>
-    <p class="text-gray-600 dark:text-stone-400 mt-2">Tips for solving common problems.</p>
+    <h1 class="text-3xl font-bold">Fehlerbehebung</h1>
+    <p class="text-gray-600 dark:text-stone-400 mt-2">Tipps zur Lösung häufiger Probleme.</p>
   </header>
 
   <article class="prose dark:prose-invert max-w-none">
-    <h2 id="enrollment-issues"><a href="#enrollment-issues" class="heading-anchor">Enrollment issues</a></h2>
+    <h2 id="enrollment-issues"><a href="#enrollment-issues" class="heading-anchor">Probleme bei der Anmeldung</a></h2>
     <p>
-      If enrollment fails, try refreshing the page and clicking the enroll button again. Make sure JavaScript is enabled in your browser.
+      Wenn die Anmeldung fehlschlägt, lade die Seite neu und klicke erneut auf die Schaltfläche „Anmelden“. Stelle sicher, dass JavaScript in deinem Browser aktiviert ist.
     </p>
 
-    <h2 id="progress-not-updating"><a href="#progress-not-updating" class="heading-anchor">Progress not updating</a></h2>
+    <h2 id="progress-not-updating"><a href="#progress-not-updating" class="heading-anchor">Der Fortschritt wird nicht aktualisiert</a></h2>
     <p>
-      Progress syncs between your AI agent and the website in real time. If checkmarks are not appearing, try refreshing the page. If the problem persists, check that your AI agent was able to call the progress API successfully.
+      Der Fortschritt wird in Echtzeit zwischen deinem KI-Agenten und der Website synchronisiert. Wenn keine Häkchen erscheinen, lade die Seite neu. Bleibt das Problem bestehen, prüfe, ob dein KI-Agent die Fortschritts-API erfolgreich aufrufen konnte.
     </p>
 
-    <h2 id="reset-progress"><a href="#reset-progress" class="heading-anchor">How to reset progress or disenroll</a></h2>
+    <h2 id="reset-progress"><a href="#reset-progress" class="heading-anchor">Fortschritt zurücksetzen oder abmelden</a></h2>
     <p>
-      Visit the <a href="/disenroll">disenroll page</a> to reset your progress or fully disenroll. Resetting clears all completions while keeping your student ID and profile.
+      Rufe die <a href="/disenroll">Abmeldeseite</a> auf, um deinen Fortschritt zurückzusetzen oder dich vollständig abzumelden. Beim Zurücksetzen werden alle abgeschlossenen Lektionen und Übungen gelöscht, während deine Schüler-ID und dein Profil erhalten bleiben.
     </p>
   </article>
 </Base>

@@ -7,56 +7,56 @@ export const prerender = true;
 import Base from "../layouts/Base.astro";
 ---
 
-<Base title="Disenroll" description="Reset your progress or disenroll from the school.">
+<Base title="Abmelden" description="Setze deinen Fortschritt zurück oder melde dich von der Schule ab.">
   <div class="mb-6">
     <a href="/" class="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-      &larr; All lessons
+      &larr; Zu allen Lektionen
     </a>
   </div>
 
   <header class="mb-8">
-    <h1 class="text-3xl font-bold">Disenroll</h1>
+    <h1 class="text-3xl font-bold">Abmelden</h1>
   </header>
 
   <div id="no-enrollment" class="hidden">
-    <p class="text-gray-600 dark:text-stone-400">You are not currently enrolled. <a href="/" class="underline">Go to the homepage</a> to enroll.</p>
+    <p class="text-gray-600 dark:text-stone-400">Du bist derzeit nicht angemeldet. <a href="/" class="underline">Gehe zur Startseite</a>, um dich anzumelden.</p>
   </div>
 
   <div id="enrolled-options" class="hidden">
     <!-- Reset progress (primary action) -->
     <div class="mb-8 p-6 border border-gray-200 dark:border-stone-700 rounded-lg">
-      <h2 class="text-xl font-semibold mb-2">Reset progress</h2>
-      <p class="text-gray-600 dark:text-stone-400 mb-4">Clear all your lesson and exercise completions so you can redo them. Your student ID and profile are kept.</p>
+      <h2 class="text-xl font-semibold mb-2">Fortschritt zurücksetzen</h2>
+      <p class="text-gray-600 dark:text-stone-400 mb-4">Lösche alle abgeschlossenen Lektionen und Übungen, um sie erneut zu bearbeiten. Deine Schüler-ID und dein Profil bleiben erhalten.</p>
       <div id="reset-confirm">
         <button
           id="reset-button"
           class="px-4 py-2 rounded-md text-sm font-medium bg-orange-600 text-white hover:bg-orange-700 transition-colors"
         >
-          Reset my progress
+          Meinen Fortschritt zurücksetzen
         </button>
       </div>
       <div id="reset-done" class="hidden">
-        <p class="text-gray-600 dark:text-stone-400">Progress has been reset. Your student ID is unchanged. <a href="/" class="underline">Go to the homepage</a> to start over.</p>
+        <p class="text-gray-600 dark:text-stone-400">Dein Fortschritt wurde zurückgesetzt. Deine Schüler-ID bleibt unverändert. <a href="/" class="underline">Gehe zur Startseite</a>, um neu zu beginnen.</p>
       </div>
       <div id="reset-error" class="hidden">
-        <p class="text-red-600 dark:text-red-400">Something went wrong resetting your progress. Try again or disenroll instead.</p>
+        <p class="text-red-600 dark:text-red-400">Beim Zurücksetzen deines Fortschritts ist ein Fehler aufgetreten. Versuche es erneut oder melde dich stattdessen ab.</p>
       </div>
     </div>
 
     <!-- Disenroll (secondary/destructive action) -->
     <div class="p-6 border border-gray-200 dark:border-stone-700 rounded-lg">
-      <h2 class="text-xl font-semibold mb-2">Disenroll completely</h2>
-      <p class="text-gray-600 dark:text-stone-400 mb-4">Remove your student ID, progress, and theme color from this browser. Your data on the server is not affected. You will need to re-enroll to use OpenCode School again.</p>
+      <h2 class="text-xl font-semibold mb-2">Vollständig abmelden</h2>
+      <p class="text-gray-600 dark:text-stone-400 mb-4">Entferne deine Schüler-ID, deinen Fortschritt und deine Themenfarbe aus diesem Browser. Deine Daten auf dem Server bleiben unberührt. Du musst dich erneut anmelden, um OpenCode School wieder zu nutzen.</p>
       <div id="disenroll-confirm">
         <button
           id="disenroll-button"
           class="px-4 py-2 rounded-md text-sm font-medium border border-red-300 dark:border-red-700 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950 transition-colors"
         >
-          Disenroll from this school
+          Von dieser Schule abmelden
         </button>
       </div>
       <div id="disenroll-done" class="hidden">
-        <p class="text-gray-600 dark:text-stone-400">You have been disenrolled. Redirecting to the home page&hellip;</p>
+        <p class="text-gray-600 dark:text-stone-400">Du wurdest abgemeldet. Du wirst zur Startseite weitergeleitet&hellip;</p>
         </div>
     </div>
   </div>
@@ -75,7 +75,7 @@ import Base from "../layouts/Base.astro";
       document.getElementById("reset-button").addEventListener("click", function () {
         var btn = this;
         btn.disabled = true;
-        btn.textContent = "Resetting\u2026";
+        btn.textContent = "Zurücksetzen\u2026";
 
         fetch("/api/progress/" + encodeURIComponent(studentId), {
           method: "DELETE",
@@ -83,7 +83,7 @@ import Base from "../layouts/Base.astro";
           body: JSON.stringify({ reset: true }),
         })
           .then(function (res) {
-            if (!res.ok) throw new Error("Reset failed");
+            if (!res.ok) throw new Error("Fortschritt konnte nicht zurückgesetzt werden");
             return res.json();
           })
           .then(function (progress) {
@@ -93,7 +93,7 @@ import Base from "../layouts/Base.astro";
           })
           .catch(function () {
             btn.disabled = false;
-            btn.textContent = "Reset my progress";
+            btn.textContent = "Meinen Fortschritt zurücksetzen";
             document.getElementById("reset-error").classList.remove("hidden");
           });
       });
@@ -113,6 +113,6 @@ import Base from "../layouts/Base.astro";
   </script>
 
   <noscript>
-    <p>JavaScript is required to use this page. Please enable it and try again.</p>
+    <p>JavaScript ist erforderlich, um diese Seite zu verwenden. Bitte aktiviere es und versuche es erneut.</p>
   </noscript>
 </Base>

@@ -37,3 +37,42 @@ describe("detail page layout", () => {
 		expect(articleIndex).toBeGreaterThan(enrollmentIndex);
 	});
 });
+
+const germanTextCases = [
+	{
+		file: "src/pages/troubleshooting.astro",
+		expected: [
+			'<Base title="Fehlerbehebung" description="Tipps zur Lösung häufiger Probleme.">',
+			"&larr; Startseite",
+			">Fehlerbehebung<",
+			">Probleme bei der Anmeldung<",
+			">Der Fortschritt wird nicht aktualisiert<",
+			">Fortschritt zurücksetzen oder abmelden<",
+		],
+	},
+	{
+		file: "src/pages/disenroll.astro",
+		expected: [
+			'<Base title="Abmelden" description="Setze deinen Fortschritt zurück oder melde dich von der Schule ab.">',
+			"&larr; Zu allen Lektionen",
+			">Abmelden<",
+			">Fortschritt zurücksetzen<",
+			"Meinen Fortschritt zurücksetzen",
+			">Vollständig abmelden<",
+			"Von dieser Schule abmelden",
+		],
+	},
+];
+
+describe("translated utility pages", () => {
+	it.each(germanTextCases)("contains German interface text in $file", ({
+		file,
+		expected,
+	}) => {
+		const source = readFileSync(resolve(process.cwd(), file), "utf8");
+
+		for (const text of expected) {
+			expect(source).toContain(text);
+		}
+	});
+});
